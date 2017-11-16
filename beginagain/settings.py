@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'profiles'
 ]
 
 MIDDLEWARE = [
@@ -76,11 +77,11 @@ WSGI_APPLICATION = 'beginagain.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django',
+        'NAME': 'begin_again',
         'USER': 'django',
         'PASSWORD': 'django',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
