@@ -4,6 +4,8 @@ from enum import unique, IntEnum
 from profiles.utils import get_choices
 from phonenumber_field.modelfields import PhoneNumberField
 from django import forms
+from django_measurement.models import MeasurementField
+from measurement.measures import Weight, Distance
 
 
 @unique
@@ -64,20 +66,31 @@ class SERVING_STATUS(IntEnum):
     NON_SERVING = 1
 
 
+@unique
+class HEIGHT_UNITS(IntEnum):
+    INCH = 0
+    CM = 1
+
+
 class Profile(models.Model):
     """ The basic matrimonial profile of a person on our app.
 
     """
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
+    gender = models.IntegerField(default=0, null=True, choices=get_choices(Gender))
     age = models.PositiveIntegerField()
-    birth_date_time = models.DateTimeField()
-    place_of_birth = models.CharField(max_length=30)
+    serving = models.BooleanField(choices=get_choices(SERVING_STATUS), default=0)
+    # has to be activated by admin only.
+    profile_status = models.BooleanField(choices=get_choices(PROFILE_STATUS), default=1)
     approved_by = models.ForeignKey(User)
     approved_on = models.DateTimeField()
+
+    birth_date_time = models.DateTimeField()
+    place_of_birth = models.CharField(max_length=30)
     body_type = models.IntegerField(default=0, null=True, choices=get_choices(BodyType))
-    height = models.PositiveIntegerField()
-    weight = models.PositiveIntegerField()
+    height = MeasurementField(measurement=Distance, unit_choices=('mc'))
+    weight = MeasurementField(measurement=Weight)
     mother_tongue = models.CharField(max_length=30)
     religion = models.CharField(max_length=30)
     physical_status = models.IntegerField(default=0, null=True, choices=get_choices(AIS))
@@ -98,12 +111,6 @@ class Profile(models.Model):
     about_me = models.CharField(max_length=500)
     require_details =  models.CharField(max_length=30)
     marital_status = models.IntegerField(default=0, null=True, choices=get_choices(MaritalStatus))
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
     email_id = models.EmailField(max_length=254)
     password = forms.CharField(widget=forms.PasswordInput)
-    gender = models.IntegerField(default=0, null=True, choices=get_choices(Gender))
-    # login_status = models.BooleanField(choices=LOGIN_STATUS) // Cant remember this
-    #profile_status = models.BooleanField(choices=PROFILE_STATUS)
-    #serving = models.BooleanField(choices=SERVING_STATUS)
 
