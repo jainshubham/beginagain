@@ -6,6 +6,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django import forms
 from django_measurement.models import MeasurementField
 from measurement.measures import Weight, Distance
+from django.contrib.auth.models import (
+    BaseUserManager, AbstractBaseUser, PermissionsMixin
+)
+from django.utils import six, timezone
+from datetime import datetime
 
 
 @unique
@@ -71,46 +76,110 @@ class HEIGHT_UNITS(IntEnum):
     INCH = 0
     CM = 1
 
+class ProfileManager(BaseUserManager):
+    def create_user(self, email, password=None):
+        """
+        Creates and saves a User with the given email, date of
+        birth and password.
+        """
+        if not email:
+            raise ValueError('Users must have an email address')
 
-class Profile(models.Model):
+        user = self.model(
+            email=self.normalize_email(email),
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
+
+
+class Profile(AbstractBaseUser, PermissionsMixin):
     """ The basic matrimonial profile of a person on our app.
 
     """
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
     gender = models.IntegerField(default=0, null=True, choices=get_choices(Gender))
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(null=True)
     serving = models.BooleanField(choices=get_choices(SERVING_STATUS), default=0)
     # has to be activated by admin only.
-    profile_status = models.BooleanField(choices=get_choices(PROFILE_STATUS), default=1)
-    approved_by = models.ForeignKey(User)
-    approved_on = models.DateTimeField()
-
-    birth_date_time = models.DateTimeField()
-    place_of_birth = models.CharField(max_length=30)
+    approved_on = models.DateTimeField(default=timezone.now)
+    birth_date_time = models.DateTimeField(null=True)
+    place_of_birth = models.CharField(max_length=30, null=True)
     body_type = models.IntegerField(default=0, null=True, choices=get_choices(BodyType))
-    height = MeasurementField(measurement=Distance, unit_choices=('mc'))
-    weight = MeasurementField(measurement=Weight)
-    mother_tongue = models.CharField(max_length=30)
-    religion = models.CharField(max_length=30)
+    height = MeasurementField(measurement=Distance, unit_choices=('mc'), null=True)
+    weight = MeasurementField(measurement=Weight, null=True)
+    mother_tongue = models.CharField(max_length=30, null=True)
+    religion = models.CharField(max_length=30, null=True)
     physical_status = models.IntegerField(default=0, null=True, choices=get_choices(AIS))
-    caste = models.CharField(max_length=30)
-    gothram = models.CharField(max_length=30)
-    zodiac = models.CharField(max_length=30)
-    star = models.CharField(max_length=30)
+    caste = models.CharField(max_length=30, null=True)
+    gothram = models.CharField(max_length=30, null=True)
+    zodiac = models.CharField(max_length=30, null=True)
+    star = models.CharField(max_length=30, null=True)
     eating_habit =  models.IntegerField(default=0, null=True, choices=get_choices(EatingHabit))
     drinking_habit = models.IntegerField(default=0, null=True, choices=get_choices(DrinkingHabit))
     smoking_habit = models.IntegerField(default=0, null=True, choices=get_choices(SmokingHabit))
-    country =  models.CharField(max_length=30)
-    city =  models.CharField(max_length=30)
-    state =  models.CharField(max_length=30)
-    pincode =  models.CharField(max_length=30)
-    education =  models.CharField(max_length=30)
+    country =  models.CharField(max_length=30, null=True)
+    city =  models.CharField(max_length=30, null=True)
+    state =  models.CharField(max_length=30, null=True)
+    pincode =  models.CharField(max_length=30,null=True)
+    education =  models.CharField(max_length=30, null=True)
     contact_no = PhoneNumberField(blank=True)
-    images = models.ImageField()
-    about_me = models.CharField(max_length=500)
-    require_details =  models.CharField(max_length=30)
+    images = models.ImageField(null=True)
+    about_me = models.CharField(max_length=500, null=True)
+    require_details =  models.CharField(max_length=30, null=True)
     marital_status = models.IntegerField(default=0, null=True, choices=get_choices(MaritalStatus))
-    email_id = models.EmailField(max_length=254)
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = models.CharField(
+        max_length=150,
+    )
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(blank=True, unique=True)
+    is_staff = models.BooleanField(
+        default=False,
+    )
+    is_active = models.BooleanField(
+        default=True,
+    )
+    date_joined = models.DateTimeField(default=timezone.now)
+    objects = ProfileManager()
+
+    EMAIL_FIELD = 'email'
+    USERNAME_FIELD = 'email'
+    #REQUIRED_FIELDS = ['name']
+
+
+    def get_full_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def get_short_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
+
 
