@@ -20,7 +20,7 @@ class ProfileListView(ListView):
 class ProfileView(ListView):
     model = Profile
     context_object_name = 'profile'
-    template_name = 'complete-profile.html'
+    template_name = 'profile-detail.html'
 
 
     def get_queryset(self):
