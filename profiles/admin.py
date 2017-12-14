@@ -62,9 +62,9 @@ class UserChangeForm(forms.ModelForm):
         :return:
         """
 
-        if not self.initial['password']:
-            raise forms.ValidationError("Enter a password.")
-        return self.initial["password"]
+        # if not self.initial['password']:
+        #     raise forms.ValidationError("Enter a password.")
+        #return self.initial["password"]
 
 
 class ProfileUserAdmin(UserAdmin):
@@ -77,11 +77,11 @@ class ProfileUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'gender', 'is_staff')
+    list_display = ('email', 'first_name', 'last_name', 'gender', 'is_staff')
     fieldsets = (
-        (None, {'fields': ('email', )}),
+        (None, {'fields': ('email', 'first_name', 'last_name')}),
         ('Personal info', {'fields': ('gender', 'age', 'is_serving', 'approved_on')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active', 'images')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
