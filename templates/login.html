@@ -37,7 +37,8 @@
 								</div>
 								<div class="space-50"></div>
 							</div>
-							<form action="/action_page.php">
+							<form action="." method="post">
+                                {% csrf_token %}
 								<div class="login-inner-container">
 								  <label>Email</label>
 								  <input type="text" placeholder="Enter Email" name="email" required>

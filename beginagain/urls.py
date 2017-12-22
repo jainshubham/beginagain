@@ -15,17 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-from profiles.views import ProfileListView, ProfileView
+from django.views.generic import TemplateView
+
+from profiles.views import ProfileListView, ProfileView, ProfileMy, LoginView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^profiles/(?P<pk>\d+)$', ProfileView.as_view()),
-    url(r'^profiles/', ProfileListView.as_view()),
-]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^profiles/me/$', ProfileMy.as_view()),
+    url(r'^profiles/(?P<id>\d+)$', ProfileView.as_view()),
+    url(r'^profiles/$', ProfileListView.as_view()),
+    url(r'^login/$', LoginView.as_view(template_name='login.html')),
+]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
