@@ -167,13 +167,10 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     # REQUIRED_FIELDS = ['name']
 
     def save(self, *args, **kwargs):
-        if self.pk is None:
-            print(kwargs.get('gender'))
-            if kwargs.get('gender') == 1:
-                self.images = "profile_pictures/female.jpeg"
-            else:
-                self.images = "profile_pictures/male.jpeg"
-            print(self.images)
+        if self.gender == 1:
+            self.images = "profile_pictures/female.jpeg"
+        else:
+            self.images = "profile_pictures/male.jpeg"
         super(Profile, self).save(*args, **kwargs)
 
 
