@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 
-from profiles.views import ProfileListView, ProfileView, MyProfile, LoginView
+from profiles.views import ProfileListView, ProfileView, MyProfile, LoginView, ShowInterest
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^profiles/me/$', MyProfile.as_view()),
     url(r'^profiles/(?P<id>\d+)$', ProfileView.as_view()),
     url(r'^profiles/$', ProfileListView.as_view()),
+    url(r'^profiles/(?P<id>\d+)/show-interest$', ShowInterest.as_view()),
     url(r'^login/$', LoginView.as_view(template_name='login.html')),
 ]
 

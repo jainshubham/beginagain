@@ -68,4 +68,16 @@ class LoginView(ListView):
         """
         # id = self.request.__dict__['user'].id
         # instance = Profile.objects.get(id=id)
-        return HttpResponseRedirect('') #render(request, 'profiles-listing.html')
+        return HttpResponseRedirect('')  # render(request, 'profiles-listing.html')
+
+
+class ShowInterest(ListView):
+    model = Profile
+    context_object_name = 'profile'
+
+    def get_queryset(self):
+        id = self.request.__dict__['user'].id
+        instance = Profile.objects.get(id=id)
+        target_instance = Profile.objects.get(id=self.kwargs['id'])
+        instance.interest_received.add(target_instance)
+        return get_object_or_404(Profile, id=id)
