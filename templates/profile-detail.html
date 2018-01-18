@@ -52,8 +52,8 @@
                                         {% if profile.images %}
                                         <img class="ppic" src="{% static profile.images.url %}">
                                         {% endif %}
-                                        <div class="complete-profile-pname"> {{ profile.first_name  }} {{ profile.last_name  }}
-                                            <div><span class="ploc"> {{ profile.location  }} </span></div>
+                                        <div class="complete-profile-pname"> {{ profile.first_name |default_if_none:"" }} {{ profile.last_name |default_if_none:"" }}
+                                            <div><span class="ploc"> {{ profile.location |default_if_none:"" }} </span></div>
                                         </div>
                                         <p class="complete-star-rating">
                                             <span class="fa fa-star checked"></span>
@@ -70,15 +70,15 @@
                                         <div class="pbio">
                                             <p class="pAge">
                                                 <span class="plabel">Age:</span>
-                                                <span class="pcard-val">{{ profile.age  }} years</span>
+                                                <span class="pcard-val">{{ profile.age |default_if_none:"" }} years</span>
                                             </p>
                                             <p class="preligion">
                                                 <span class="plabel">Religion:</span>
-                                                <span class="pcard-val">{{ profile.religion  }}</span>
+                                                <span class="pcard-val">{{ profile.religion |default_if_none:"" }}</span>
                                             </p>
                                             <p class="pzod">
                                                 <span class="plabel">Zodiac:</span>
-                                                <span class="pcard-val">{{ profile.zodiac  }}</span>
+                                                <span class="pcard-val">{{ profile.zodiac |default_if_none:"" }}</span>
                                             </p>
                                             <p class="pheight">
                                                 <span class="plabel">Height:</span>
@@ -86,103 +86,103 @@
                                             </p>
                                             <p class="pedu">
                                                 <span class="plabel">Education:</span>
-                                                <span class="pcard-val">{{ profile.education  }}</span>
+                                                <span class="pcard-val">{{ profile.education  |default_if_none:""}}</span>
                                             </p>
                                             <p class="pemail">
                                                 <span class="plabel">Email:</span>
-                                                <span class="pcard-val">{{ profile.email  }}</span>
+                                                <span class="pcard-val">{{ profile.email |default_if_none:"" }}</span>
                                             </p>
                                             <p class="pcontactno">
                                                 <span class="plabel">Contact no:</span>
-                                                <span class="pcard-val">{{ profile.contact_no  }}</span>
+                                                <span class="pcard-val">{{ profile.contact_no |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Gender</span>
-                                                <span class="pcard-val">{{ profile.gender  }}</span>
+                                                <span class="pcard-val">{{ profile.gender |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Contact no:</span>
-                                                <span class="pcard-val">{{ profile.contact_no  }}</span>
+                                                <span class="pcard-val">{{ profile.contact_no |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Is Serving</span>
-                                                <span class="pcard-val">{{ profile.is_serving  }}</span>
+                                                <span class="pcard-val">{{ profile.is_serving |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Contact no:</span>
-                                                <span class="pcard-val">{{ profile.contact_no  }}</span>
+                                                <span class="pcard-val">{{ profile.contact_no |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Birth Time:</span>
-                                                <span class="pcard-val">{{ profile.birth_date_time  }}</span>
+                                                <span class="pcard-val">{{ profile.birth_date_time  |default_if_none:""}}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Contact no:</span>
-                                                <span class="pcard-val">{{ profile.contact_no  }}</span>
+                                                <span class="pcard-val">{{ profile.contact_no |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Birth Place:</span>
-                                                <span class="pcard-val">{{ profile.place_of_birth  }}</span>
+                                                <span class="pcard-val">{{ profile.place_of_birth |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Body Type:</span>
-                                                <span class="pcard-val">{{ profile.body_type  }}</span>
+                                                <span class="pcard-val">{{ profile.body_type |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Weight:</span>
-                                                <span class="pcard-val">{{ profile.weight  }}</span>
+                                                <span class="pcard-val">{{ profile.weight |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Mother Tongue:</span>
-                                                <span class="pcard-val">{{ profile.mother_tongue  }}</span>
+                                                <span class="pcard-val">{{ profile.mother_tongue |default_if_none:""  }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Physical Status:</span>
-                                                <span class="pcard-val">{{ profile.physical_status  }}</span>
+                                                <span class="pcard-val">{{ profile.physical_status  |default_if_none:""}}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Caste:</span>
-                                                <span class="pcard-val">{{ profile.caste  }}</span>
+                                                <span class="pcard-val">{{ profile.caste |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Gothram:</span>
-                                                <span class="pcard-val">{{ profile.gothram  }}</span>
+                                                <span class="pcard-val">{{ profile.gothram  |default_if_none:""}}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Star:</span>
-                                                <span class="pcard-val">{{ profile.star  }}</span>
+                                                <span class="pcard-val">{{ profile.star |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Eating Habits:</span>
-                                                <span class="pcard-val">{{ profile.eating_habit  }}</span>
+                                                <span class="pcard-val">{{ profile.eating_habit |default_if_none:""  }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Drinking:</span>
-                                                <span class="pcard-val">{{ profile.drinking_habit  }}</span>
+                                                <span class="pcard-val">{{ profile.drinking_habit |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Somking:</span>
-                                                <span class="pcard-val">{{ profile.smoking_habit  }}</span>
+                                                <span class="pcard-val">{{ profile.smoking_habit |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Country:</span>
-                                                <span class="pcard-val">{{ profile.country  }}</span>
+                                                <span class="pcard-val">{{ profile.country |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">City:</span>
-                                                <span class="pcard-val">{{ profile.city  }}</span>
+                                                <span class="pcard-val">{{ profile.city|default_if_none:""  }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">State:</span>
-                                                <span class="pcard-val">{{ profile.state  }}</span>
+                                                <span class="pcard-val">{{ profile.state |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Pin Code:</span>
-                                                <span class="pcard-val">{{ profile.pincode  }}</span>
+                                                <span class="pcard-val">{{ profile.pincode |default_if_none:"" }}</span>
                                             </p>
                                             <p class="generic">
                                                 <span class="plabel">Marital Status:</span>
-                                                <span class="pcard-val">{{ profile.marital_status  }}</span>
+                                                <span class="pcard-val">{{ profile.marital_status |default_if_none:"" }}</span>
                                             </p>
 
                                         </div>
