@@ -37,11 +37,10 @@
 								</div>
 								<div class="space-50"></div>
 							</div>
-							<form action="." method="post">
-                                {% csrf_token %}
+							<form action="/action_page.php">
 								<div class="login-inner-container">
 								  <label>Email</label>
-								  <input type="text" placeholder="Enter Email" name="email" required>
+								  <input type="email" placeholder="Enter Email" name="email" required>
 								  <div class="space-20"></div>
 								  
 								  <label>Password</label>
@@ -52,13 +51,44 @@
 								<div class="login-form-footer">
 								  <button type="submit" class="login-btn">Login</button>
 								  <div class="space-15"></div>
-								  <span class="psw">Forgot <a href="#">password?</a></span>
+								  <span class="psw" data-toggle="modal" data-target="#forgotPasswordModal">
+									Forgot password?
+                                                                  </span>
 								</div>
 							</form>
 						</div>
 					</section>
 			</div>
 
+<!-- Modal -->
+  <div class="modal fade" id="forgotPasswordModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password</h4>
+        </div>
+        <form action="/action_page.php">
+        <div class="modal-body">
+        <div class="space-20"></div>
+		<div class="forgot-password-inner-container">
+		  <label>Email</label>
+		  <input type="email" placeholder="Please enter the Email your registered with" name="email" required="">
+		</div>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="modal-footer">
+          <button type="submit" class="login-btn forgot-password-submit">Submit</button>
+          <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+      </div>
+      
+    </div>
+  </div>
 		<!-- Scripts -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
