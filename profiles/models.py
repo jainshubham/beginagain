@@ -157,9 +157,8 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    # interested_suitors = models.ManyToManyField('self', related_name='intersted_suitors')
-    # interesting_suitors = models.ManyToManyField('self', related_name='interesting_suitors')
-    # matched_suitors = models.ManyToManyField('self', related_name='matched_suitors')
+    interest_shown = models.ManyToManyField('self', related_name='interest_received')
+    matches = models.ManyToManyField('self', related_name='matches')
     objects = ProfileManager()
 
     EMAIL_FIELD = 'email'
