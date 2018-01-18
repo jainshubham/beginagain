@@ -46,7 +46,10 @@ class MyProfile(ListView):
         id = self.request.__dict__['user'].id
         instance = Profile.objects.get(id=id)
         for key in Profile._meta.get_fields():
-            setattr(instance, key.name, request.POST.get(key.name))
+            value = request.POST.get(key.name)
+            if value:
+                print(values)
+                setattr(instance, key.name, value)
         instance.save()
         return HttpResponseRedirect('')
 
