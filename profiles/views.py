@@ -43,8 +43,11 @@ class MyProfile(ListView):
         :param kwargs:
         :return:
         """
-        # id = self.request.__dict__['user'].id
-        # instance = Profile.objects.get(id=id)
+        id = self.request.__dict__['user'].id
+        instance = Profile.objects.get(id=id)
+        for key in Profile._meta.get_all_field_names():
+            setattr(instance, key, request.POST.get(key))
+        instance.save()
         return HttpResponseRedirect('')
 
 class LoginView(ListView):
