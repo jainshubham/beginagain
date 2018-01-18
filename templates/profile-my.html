@@ -85,6 +85,70 @@
                                                 <span class="plabel">Contact no:</span>
                                                 <span class="pcard-val">{{ profile.contact_no  }}</span>
                                             </p>
+                                          <p class="generic">
+                                                <span class="plabel">Birth Place:</span>
+                                                <span class="pcard-val">{{ profile.place_of_birth  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Body Type:</span>
+                                                <span class="pcard-val">{{ profile.body_type  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Weight:</span>
+                                                <span class="pcard-val">{{ profile.weight  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Mother Tongue:</span>
+                                                <span class="pcard-val">{{ profile.mother_tongue  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Physical Status:</span>
+                                                <span class="pcard-val">{{ profile.physical_status  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Caste:</span>
+                                                <span class="pcard-val">{{ profile.caste  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Gothram:</span>
+                                                <span class="pcard-val">{{ profile.gothram  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Star:</span>
+                                                <span class="pcard-val">{{ profile.star  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Eating Habits:</span>
+                                                <span class="pcard-val">{{ profile.eating_habit  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Drinking:</span>
+                                                <span class="pcard-val">{{ profile.drinking_habit  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Somking:</span>
+                                                <span class="pcard-val">{{ profile.smoking_habit  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Country:</span>
+                                                <span class="pcard-val">{{ profile.country  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">City:</span>
+                                                <span class="pcard-val">{{ profile.city  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">State:</span>
+                                                <span class="pcard-val">{{ profile.state  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Pin Code:</span>
+                                                <span class="pcard-val">{{ profile.pincode  }}</span>
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Marital Status:</span>
+                                                <span class="pcard-val">{{ profile.marital_status  }}</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,36 +190,101 @@
                                             </p>
                                             <p class="pzod">
                                                 <span class="plabel">Zodiac:</span>
-                                                <input type="text" placeholder="Zodiac" name="profileZodiac" value="Gemini">
+                                                <input type="text" placeholder="Zodiac" name="profileZodiac" value="{{ profile.zodiac }}">
                                             </p>
                                             <p class="pheight">
                                                 <span class="plabel">Height:</span>
-                                                <input type="text" placeholder="Height" name="profileHeight" value="5 Feet 10 Inches">
+                                                <input type="text" placeholder="Height" name="profileHeight" value="{{ profile.height }}">
                                             </p>
                                             <p class="pedu">
                                                 <span class="plabel">Education:</span>
-                                                <input type="text" placeholder="Education" name="profileEducation" value="MBA">
+                                                <input type="text" placeholder="Education" name="profileEducation" value="{{ profile.education }}">
                                             </p>
                                             <p class="pprof">
                                                 <span class="plabel">Profession:</span>
-                                                <input type="text" placeholder="Profession" name="profileProfession" value="Lawyer">
+                                                <input type="text" placeholder="Profession" name="profileProfession" value="{{ profile.profession }}">
                                             </p>
                                             <p class="pemail">
                                                 <span class="plabel">Email:</span>
-                                                <input type="email" placeholder="Email Id" name="profileEmail" value="abc@gmail.com">
+                                                <input type="email" placeholder="Email Id" name="profileEmail" value="{{ profile.email }}">
                                             </p>
                                             <p class="pcontactno">
                                                 <span class="plabel">Contact no:</span>
-                                                <input type="number" placeholder="Contact no" name="profileContactNo" value="9810738298">
+                                                <input type="number" placeholder="Contact no" name="profileContactNo" value="{{ profile.contact_no }}">
                                             </p>
                                             <p class="pnewpassword">
                                                 <span class="plabel">New Password:</span>
-                                                <input type="password" placeholder="New password" name="profileNewPassword" value="123456">
+                                                <input type="password" placeholder="New password" name="profileNewPassword" value="">
                                             </p>
                                             <p class="poldpassword">
                                                 <span class="plabel">Old Password:</span>
-                                                <input type="password" placeholder="Old password" name="profileOldPassword" value="1234567">
+                                                <input type="password" placeholder="Old password" name="profileOldPassword" value="">
                                             </p>
+                                          <p class="generic">
+                                                <span class="plabel">Birth Place:</span>
+                                                <input type="email" placeholder="Birth Place" name="profileEmail" value="{{ profile.place_of_birth }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Body Type:</span>
+                                                <input type="email" placeholder="Body Type" name="profileEmail" value="{{ profie.body_type }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Weight:</span>
+                                                <input type="email" placeholder="Weight" name="profileEmail" value="{{ profile.weight }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Mother Tongue:</span>
+                                                <input type="email" placeholder="Mother Tongue" name="profileEmail" value="{{ profile.mother_tongue }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Physical Status:</span>
+                                                <input type="email" placeholder="Physical Status" name="profileEmail" value="{{ profile.physical_status }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Caste:</span>
+                                                <input type="email" placeholder="Caste" name="profileEmail" value="{{ profile.caste }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Gothram:</span>
+                                                <input type="email" placeholder="Gotram" name="profileEmail" value="{{ profile.gothram }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Star:</span>
+                                                <input type="email" placeholder="Star" name="profileEmail" value="{{ profile.star }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Eating Habits:</span>
+                                                <input type="email" placeholder="Eating Habits" name="profileEmail" value="{{ profile.eating_habit }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Drinking:</span>
+                                                <input type="email" placeholder="Drinking" name="profileEmail" value="{{ profile.drinking_habit }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Somking:</span>
+                                                <input type="email" placeholder="Smoking" name="profileEmail" value="{{ profile.smoking_habit }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Country:</span>
+                                                <input type="email" placeholder="Country" name="profileEmail" value="{{ profile.country }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">City:</span>
+                                                <input type="email" placeholder="City" name="profileEmail" value="{{ profile.city }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">State:</span>
+                                                <input type="email" placeholder="State" name="profileEmail" value="{{ profile.state }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Pin Code:</span>
+                                                <input type="email" placeholder="Pin Code" name="profileEmail" value="{{ profile.pincode }}">
+                                            </p>
+                                            <p class="generic">
+                                                <span class="plabel">Marital Status:</span>
+                                                <input type="email" placeholder="Marital Status" name="profileEmail" value="{{ profile.marital_status }}">
+                                            </p>
+
 
                                         </div>
                                     </div>
