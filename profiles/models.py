@@ -146,7 +146,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     pincode = models.CharField(max_length=30, null=True)
     education = models.CharField(max_length=30, null=True)
     contact_no = PhoneNumberField(blank=True)
-    images = models.ImageField(null=True, upload_to="profile_pictures", default='profile_pictures/male.jpeg')
+    images = models.ImageField(null=True, upload_to="profile_pictures")
     about_me = models.CharField(max_length=500, null=True)
     require_details = models.CharField(max_length=30, null=True)
     marital_status = models.IntegerField(default=0, null=True, choices=get_choices(MaritalStatus))
