@@ -79,5 +79,5 @@ class ShowInterest(ListView):
         id = self.request.__dict__['user'].id
         instance = Profile.objects.get(id=id)
         target_instance = Profile.objects.get(id=self.kwargs['id'])
-        instance.interest_received.add(target_instance)
+        instance.interest_shown.add(target_instance)
         return get_object_or_404(Profile, id=id)
