@@ -166,11 +166,13 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     # REQUIRED_FIELDS = ['name']
 
-    def save(self):
-        if self.gender == 1:
-            self.images = "profile_pictures/female.jpeg"
-        else:
-            self.images = "profile_pictures/male.jpeg"
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            if self.gender == 1:
+                self.images = "profile_pictures/female.jpeg"
+            else:
+                self.images = "profile_pictures/male.jpeg"
+        super(Profile, self).save(*args, **kwargs)
 
 
     def get_full_name(self):
