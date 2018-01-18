@@ -1,13 +1,9 @@
 # Create your views here.
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response, render, redirect
-from django.template import RequestContext
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.shortcuts import get_object_or_404
 
-from django.views.generic import ListView, View
+from django.views.generic import ListView
 from profiles.models import Profile
-from django.http import HttpResponse
-from django.urls import reverse
 
 
 class ProfileListView(ListView):
@@ -30,13 +26,12 @@ class ProfileView(ListView):
         return get_object_or_404(Profile, id=self.kwargs['id'])
 
 
-class ProfileMy(ListView):
+class MyProfile(ListView):
     model = Profile
     context_object_name = 'profile'
     template_name = 'profile-my.html'
 
     def get_queryset(self):
-        print('get')
         id = self.request.__dict__['user'].id
         return get_object_or_404(Profile, id=id)
 
@@ -67,5 +62,4 @@ class LoginView(ListView):
         """
         # id = self.request.__dict__['user'].id
         # instance = Profile.objects.get(id=id)
-        print('here')
-        return render(request, 'profiles-listing.html')
+        return HttpResponseRedirect('') #render(request, 'profiles-listing.html')
