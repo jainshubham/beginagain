@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    url(r'^$', LoginView.as_view(template_name='login.html')),
     url(r'^admin/', admin.site.urls),
     url(r'^profiles/me/$', MyProfile.as_view()),
     url(r'^profiles/(?P<id>\d+)$', ProfileView.as_view()),
