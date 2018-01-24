@@ -37,7 +37,7 @@
 								</div>
 								<div class="space-50"></div>
 							</div>
-							<form action="/action_page.php">
+							<form action="" method="post">{% csrf_token %}
 								<div class="login-inner-container">
 								  <label>Email</label>
 								  <input type="email" placeholder="Enter Email" name="email" required>
@@ -53,7 +53,7 @@
 								  <div class="space-15"></div>
 								  <span class="psw" data-toggle="modal" data-target="#forgotPasswordModal">
 									Forgot password?
-                                                                  </span>
+                                  </span>
 								</div>
 							</form>
 						</div>
@@ -70,7 +70,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Forgot Password</h4>
         </div>
-        <form action="/action_page.php">
+        <form action="" method="post"> {% csrf_token %}
         <div class="modal-body">
         <div class="space-20"></div>
 		<div class="forgot-password-inner-container">
