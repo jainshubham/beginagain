@@ -13,21 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.conf.urls import url
-
-from profiles.views import ProfileListView, ProfileView, MyProfile, LoginView, ShowInterest
 from django.conf import settings
 from django.conf.urls.static import static
 
+# from django.urls import reverse_lazy
+
+from profiles.views import (
+    MyProfile,
+    LoginView,
+    LogoutView,
+    ProfileListView,
+    ProfileView,
+    ShowInterest
+)
+
 urlpatterns = [
-    url(r'^$', LoginView.as_view(template_name='login.html')),
+    url(r'^$', LoginView.as_view()),
     url(r'^admin/', admin.site.urls),
     url(r'^profiles/me/$', MyProfile.as_view()),
-    url(r'^profiles/(?P<id>\d+)$', ProfileView.as_view()),
+    url(r'^profiles/(?P<id>\d+)/$', ProfileView.as_view()),
     url(r'^profiles/$', ProfileListView.as_view()),
     url(r'^profiles/(?P<id>\d+)/show-interest$', ShowInterest.as_view()),
-    url(r'^login/$', LoginView.as_view(template_name='login.html')),
+    url(r'^login/$', LoginView.as_view()),
+    url(r'^logout/$', LogoutView.as_view()),
+    # url(r'^logout/$', LogoutView.as_view(next_page=reverse_lazy('login'))),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

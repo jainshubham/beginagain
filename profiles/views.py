@@ -1,10 +1,10 @@
 # Create your views here.
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, RedirectView
 
 from profiles.models import Profile
 
@@ -34,7 +34,7 @@ class MyProfile(ListView):
     model = Profile
     context_object_name = 'profile'
     template_name = 'profile-my.html'
-
+    #
     # def get_queryset(self):
     #     id = self.request.__dict__['user'].id
     #     return get_object_or_404(Profile, id=id)
@@ -68,6 +68,7 @@ class MyProfile(ListView):
 class LoginView(ListView):
     model = Profile
     context_object_name = 'profiles'
+    template_name = 'login.html'
 
     def post(self, request, *args, **kwargs):
         """Not sure why post is redirecting here
@@ -81,10 +82,27 @@ class LoginView(ListView):
         password = request.POST.get('psw')
         if not (email and password):
             raise Exception("provide valid email and password.")
-        user = authenticate(email=email, password=password)
+        user = authenticate(request, email=email, password=password)
         if not user:
             raise Exception("provide valid email and password.")
-        return HttpResponseRedirect('profiles/')
+        login(request, user)
+        return HttpResponseRedirect('profiles/me/')
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect('profiles/me/')
+        else:
+            return render(request, self.template_name)
+
+
+class LogoutView(RedirectView):
+    next_page = '/'
+
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated():
+            logout(self.request)
+        # return super(LogoutView, self).get_redirect_url(request, *args, **kwargs)
+        return HttpResponseRedirect('/')
 
 
 class ShowInterest(ListView):
