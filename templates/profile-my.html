@@ -70,7 +70,7 @@
                   </p>
                   <p class="pheight">
                     <span class="plabel">Height:</span>
-                    <span class="pcard-val">{{ profile.hieght  }}</span>
+                    <span class="pcard-val">{{ profile.height  }}</span>
                   </p>
                   <p class="pedu">
                     <span class="plabel">Education:</span>
@@ -125,7 +125,7 @@
                     <span class="pcard-val">{{ profile.drinking_habit  }}</span>
                   </p>
                   <p class="generic">
-                    <span class="plabel">Somking:</span>
+                    <span class="plabel">Smoking:</span>
                     <span class="pcard-val">{{ profile.smoking_habit  }}</span>
                   </p>
                   <p class="generic">
@@ -256,7 +256,7 @@
                       <input type="text" placeholder="Drinking" name="drinking_habit" value="{{ profile.drinking_habit }}">
                     </p>
                     <p class="generic">
-                      <span class="plabel">Somking:</span>
+                      <span class="plabel">Smoking:</span>
                       <input type="text" placeholder="Smoking" name="smoking_habit" value="{{ profile.smoking_habit }}">
                     </p>
                     <p class="generic">
@@ -286,12 +286,13 @@
           </div>
           <!-- Other profiles on the right -->
           <div class="other-profiles-wrapper col-sm-4">
+              {% for profile in profiles %}
             <div class="profile-card">
               <div class="profile-head">
                 <img class="ppic" src="images/p1.jpg">
                 <span class="pname">
-                  Varun Sharma
-                  <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
+                  {{ profile.first_name}} {{ profile.last_name }}
+                  <div><span class="pfage">{{profile.age}} years,</span><span class="ploc">{{profile.city}}</span></div>
                 </span>
                 <p class="star-rating">
                   <span class="fa fa-star checked"></span>
@@ -302,49 +303,12 @@
                 </p>
               </div>
               <div class="profile-body">
-                <a href="complete-profile.html" class="pbtn view-full-profile">View full profile</a>
+                <a href="/profiles/{{profile.id}}" class="pbtn view-full-profile">View full profile</a>
                 <a href="#" class="pbtn">I'm interested</a>
               </div>
             </div>
-            <div class="profile-card">
-              <div class="profile-head">
-                <img class="ppic" src="images/p2.jpg">
-                <span class="pname">
-                  Mayank Jha
-                  <div><span class="pfage">29 years,</span><span class="ploc">West Bengal</span></div>
-                </span>
-                <p class="star-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </p>
-              </div>
-              <div class="profile-body">
-                <a href="#" class="pbtn view-full-profile">View full profile</a>
-              </div>
-            </div>
-            <div class="profile-card">
-              <div class="profile-head">
-                <img class="ppic" src="images/p3.jpg">
-                <span class="pname">
-                  Divakar Gupta
-                  <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
-                </span>
-                <p class="star-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </p>
-              </div>
-              <div class="profile-body">
-                <a href="#" class="pbtn view-full-profile">View full profile</a>
-                <a href="#" class="pbtn">I'm interested</a>
-              </div>
-            </div>
+            {% endfor %}
+
             <div class="view-all-profiles">
               <a href="../" class="pbtn">View all profiles</a>
             </div>

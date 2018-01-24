@@ -163,68 +163,31 @@
           </div>
           <!-- Other profiles on the right -->
           <div class="other-profiles-wrapper col-sm-4">
-            <div class="profile-card">
-              <div class="profile-head">
-                <img class="ppic" src="images/p1.jpg">
-                <span class="pname">
-                  Varun Sharma
-                  <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
-                </span>
-                <p class="star-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </p>
+            {% for profile in profiles %}
+              <div class="profile-card">
+                <div class="profile-head">
+                  <img class="ppic" src="images/p1.jpg">
+                  <span class="pname">
+                    Varun Sharma
+                    <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
+                  </span>
+                  <p class="star-rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </p>
+                </div>
+                <div class="profile-body">
+                  <a href="complete-profile.html" class="pbtn view-full-profile">View full profile</a>
+                  <a href="#" class="pbtn">I'm interested</a>
+                </div>
               </div>
-              <div class="profile-body">
-                <a href="complete-profile.html" class="pbtn view-full-profile">View full profile</a>
-                <a href="#" class="pbtn">I'm interested</a>
-              </div>
-            </div>
-            <div class="profile-card">
-              <div class="profile-head">
-                <img class="ppic" src="images/p2.jpg">
-                <span class="pname">
-                  Mayank Jha
-                  <div><span class="pfage">29 years,</span><span class="ploc">West Bengal</span></div>
-                </span>
-                <p class="star-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </p>
-              </div>
-              <div class="profile-body">
-                <a href="#" class="pbtn view-full-profile">View full profile</a>
-                <a href="#" class="pbtn">I'm interested</a>
-              </div>
-            </div>
-            <div class="profile-card">
-              <div class="profile-head">
-                <img class="ppic" src="images/p3.jpg">
-                <span class="pname">
-                  Divakar Gupta
-                  <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
-                </span>
-                <p class="star-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </p>
-              </div>
-              <div class="profile-body">
-                <a href="#" class="pbtn view-full-profile">View full profile</a>
-                <a href="#" class="pbtn">I'm interested</a>
-              </div>
-            </div>
+            {% endfor %}
+
             <div class="view-all-profiles">
-              <a href="profiles-listing.html" class="pbtn">View all profiles</a>
+              <a href="/profiles/" class="pbtn">View all profiles</a>
             </div>
           </div>
         </div>
