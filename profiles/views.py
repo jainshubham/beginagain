@@ -15,8 +15,9 @@ class ProfileListView(ListView):
     template_name = 'profiles-listing.html'
 
     def get_queryset(self):
-        gender = not self.request.__dict__['user'].gender
-        queryset = Profile.objects.filter(gender=gender)
+        gender = not self.request.user.gender
+        # queryset = Profile.objects.filter(gender=gender)
+        queryset = Profile.objects.all()
         return queryset
 
 
@@ -75,10 +76,7 @@ class LoginView(ListView):
         user = authenticate(email=email, password=password)
         if not user:
             raise Exception("provide valid email and password.")
-        profile = Profile.objects.get(email=email)
-        return render(request, 'profiles-listing.html',  {
-            'profiles': [profile]
-        },)
+        return HttpResponseRedirect('profiles/')
 
 
 class ShowInterest(ListView):
