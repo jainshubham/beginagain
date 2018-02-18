@@ -98,7 +98,7 @@
                   </p>
                   <p class="generic">
                     <span class="plabel">Body Type:</span>
-                    <span class="pcard-val">{{ profile.body_type  }}</span>
+                    <span class="pcard-val">{{ profile.get_body_type_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Weight:</span>
@@ -110,7 +110,7 @@
                   </p>
                   <p class="generic">
                     <span class="plabel">Physical Status:</span>
-                    <span class="pcard-val">{{ profile.physical_status  }}</span>
+                    <span class="pcard-val">{{ profile.get_physical_status_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Caste:</span>
@@ -126,15 +126,15 @@
                   </p>
                   <p class="generic">
                     <span class="plabel">Eating Habits:</span>
-                    <span class="pcard-val">{{ profile.eating_habit  }}</span>
+                    <span class="pcard-val">{{ profile.get_eating_habit_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Drinking:</span>
-                    <span class="pcard-val">{{ profile.drinking_habit  }}</span>
+                    <span class="pcard-val">{{ profile.get_drinking_habit_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Smoking:</span>
-                    <span class="pcard-val">{{ profile.smoking_habit  }}</span>
+                    <span class="pcard-val">{{ profile.get_smoking_habit_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Country:</span>
@@ -154,7 +154,7 @@
                   </p>
                   <p class="generic">
                     <span class="plabel">Marital Status:</span>
-                    <span class="pcard-val">{{ profile.marital_status  }}</span>
+                    <span class="pcard-val">{{ profile.get_marital_status_display  }}</span>
                   </p>
                 </div>
               </div>
