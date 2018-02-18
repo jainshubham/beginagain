@@ -16,8 +16,8 @@ from profiles.utils import get_choices
 
 @unique
 class EatingHabit(IntEnum):
-    VEGETARIAN = 1
-    NON_VEGETARIAN = 2
+    VEGETARIAN = 0
+    NON_VEGETARIAN = 1
 
 
 @unique
