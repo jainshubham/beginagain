@@ -90,7 +90,7 @@
                   </p>
                   <p class="pcontactno">
                     <span class="plabel">Contact no:</span>
-                    <span class="pcard-val">{{ profile.contact_no  }}</span>
+                    <span class="pcard-val">+{{ profile.contact_no.country_code  | default_if_none:"" }}-{{ profile.contact_no.national_number  | default_if_none:"" }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Birth Place:</span>
@@ -312,7 +312,7 @@
               {% for profile in profiles %}
             <div class="profile-card">
               <div class="profile-head">
-                <img class="ppic" src="{{ profile.images }}">
+                <img class="ppic" src="{{ profile.images.url }}">
                 <span class="pname">
                   {{ profile.first_name}} {{ profile.last_name }}
                   <div><span class="pfage">{{profile.age}} years,</span><span class="ploc">{{profile.city}}</span></div>
