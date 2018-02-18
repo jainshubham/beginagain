@@ -62,7 +62,7 @@ class MyProfile(ListView):
             if value:
                 setattr(instance, key.name, value.strip(' g').strip(' m'))
         instance.save()
-        return HttpResponseRedirect('')
+        return HttpResponseRedirect('.')
 
 
 class LoginView(ListView):
