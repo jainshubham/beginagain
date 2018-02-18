@@ -59,7 +59,10 @@ class MyProfile(ListView):
         instance = Profile.objects.get(id=id)
         for key in Profile._meta.get_fields():
             value = request.POST.get(key.name)
-            if value:
+            if key.name == 'images':
+                value = key.upload_to + '/' + value
+                setattr(instance, key.name, value)
+            if key.name in ['height', 'weight']:
                 setattr(instance, key.name, value.strip(' g').strip(' m'))
         instance.save()
         return HttpResponseRedirect('.')
