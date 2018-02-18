@@ -133,7 +133,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     weight = MeasurementField(measurement=Weight, default=60)
     mother_tongue = models.CharField(max_length=30, blank=True)
     religion = models.CharField(max_length=30, blank=True)
-    physical_status = models.IntegerField(default=0, choices=get_choices(AIS))
+    physical_status = models.IntegerField(default=3, choices=get_choices(AIS))
     caste = models.CharField(max_length=30, blank=True)
     gothram = models.CharField(max_length=30, blank=True)
     zodiac = models.CharField(max_length=30, blank=True)
