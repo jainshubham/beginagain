@@ -183,6 +183,12 @@
                 </div>
                 <div class="profile-body">
                   <div class="pbio peditable-bio">
+
+                    <p class="file-upload">Currently: <a href="{{ profile.images.url }}">
+                        {{ profile.images.url }}</a><br>
+                    Change:
+                    <input type="file" name="images" placeholder="Image" value="{{ profile.images }}>
+                    </p>
                     <p class="pAge">
                       <span class="plabel">First Name:</span>
                       <input type="text" placeholder="First Name" name="first_name" value="{{ profile.first_name }}">
