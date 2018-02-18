@@ -60,7 +60,7 @@ class MyProfile(ListView):
         for key in Profile._meta.get_fields():
             value = request.POST.get(key.name)
             if value:
-                setattr(instance, key.name, value)
+                setattr(instance, key.name, value.strip(' g').strip(' m'))
         instance.save()
         return HttpResponseRedirect('')
 
