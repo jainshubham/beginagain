@@ -56,6 +56,14 @@
               </div>
               <div class="profile-body">
                 <div class="pbio">
+                  <p class="pFirst Name">
+                    <span class="plabel">First Name:</span>
+                    <span class="pcard-val">{{ profile.first_name  }}</span>
+                  </p>
+                  <p class="pAge">
+                    <span class="plabel">Last Name:</span>
+                    <span class="pcard-val">{{ profile.last_name  }}</span>
+                  </p>
                   <p class="pAge">
                     <span class="plabel">Age:</span>
                     <span class="pcard-val">{{ profile.age  }} years</span>
@@ -175,6 +183,14 @@
                 </div>
                 <div class="profile-body">
                   <div class="pbio peditable-bio">
+                    <p class="pAge">
+                      <span class="plabel">First Name:</span>
+                      <input type="text" placeholder="First Name" name="first_name" value="{{ profile.first_name }}">
+                    </p>
+                    <p class="pAge">
+                      <span class="plabel">Last Name:</span>
+                      <input type="text" placeholder="Last Name" name="last_name" value="{{ profile.last_name }}">
+                    </p>
                     <p class="pAge">
                       <span class="plabel">Age:</span>
                       <input type="text" placeholder="Age" name="age" value="{{ profile.age }}">
