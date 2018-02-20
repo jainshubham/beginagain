@@ -235,7 +235,14 @@
                     </p>
                     <p class="generic">
                       <span class="plabel">Body Type:</span>
-                      <input type="text" placeholder="Body Type" name="body_type" value="{{ profie.body_type }}">
+                      <select type="text" placeholder="Body Type" name="body_type" >
+                          {% for key, value in choices.body_type %}
+                            <option value="{{ key }}"
+                              {% if key == profile.body_type %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+
                     </p>
                     <p class="generic">
                       <span class="plabel">Weight:</span>
@@ -247,7 +254,13 @@
                     </p>
                     <p class="generic">
                       <span class="plabel">Physical Status:</span>
-                      <input type="text" placeholder="Physical Status" name="mother_tongue" value="{{ profile.physical_status }}">
+                      <select type="text" placeholder="Physical Status" name="physical_status" >
+                          {% for key, value in choices.physical_status %}
+                            <option value="{{ key }}"
+                              {% if key == profile.physical_status %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
                     </p>
                     <p class="generic">
                       <span class="plabel">Caste:</span>

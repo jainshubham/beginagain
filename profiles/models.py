@@ -13,6 +13,14 @@ from datetime import datetime, timedelta
 
 from profiles.utils import get_choices
 
+"""
+TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Religion
+TODO: Register
+TODO: Add docs. 
+
+
+"""
+
 
 @unique
 class EatingHabit(IntEnum):
@@ -221,5 +229,4 @@ class Profile(AbstractBaseUser, PermissionsMixin):
             except AttributeError:
                 pass
         return choices
-
 
