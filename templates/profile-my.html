@@ -229,14 +229,6 @@
                       <span class="plabel">Contact no:</span>
                       <input type="number" placeholder="Contact no" name="contact_no" value="{{ profile.contact_no }}">
                     </p>
-                    <p class="pnewpassword">
-                      <span class="plabel">New Password:</span>
-                      <input type="password" placeholder="New password" name="new_password" value="">
-                    </p>
-                    <p class="poldpassword">
-                      <span class="plabel">Old Password:</span>
-                      <input type="password" placeholder="Old password" name="new_password" value="">
-                    </p>
                     <p class="generic">
                       <span class="plabel">Birth Place:</span>
                       <input type="text" placeholder="Birth Place" name="place_of_birth" value="{{ profile.place_of_birth }}">
@@ -270,12 +262,24 @@
                       <input type="text" placeholder="Star" name="star" value="{{ profile.star }}">
                     </p>
                     <p class="generic">
-                      <span class="plabel">Eating Habits:</span>
-                      <input type="text" placeholder="Eating Habits" name="eating_habit" value="{{ profile.eating_habit }}">
+                      <span class="plabel">Eating Habits: </span>
+                      <select type="text" placeholder="Eating Habits" name="eating_habit" >
+                          {% for key, value in choices.eating_habit %}
+                            <option value="{{ key }}"
+                              {% if key == profile.eating_habit %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
                     </p>
                     <p class="generic">
-                      <span class="plabel">Drinking:</span>
-                      <input type="text" placeholder="Drinking" name="drinking_habit" value="{{ profile.drinking_habit }}">
+                      <span class="plabel">Drinking: </span>
+                      <select type="text" placeholder="Drinking" name="drinking_habit" >
+                          {% for key, value in choices.drinking_habit %}
+                            <option value="{{ key }}"
+                              {% if key == profile.drinking_habit %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
                     </p>
                     <p class="generic">
                       <span class="plabel">Smoking: </span>
@@ -286,9 +290,6 @@
                             </option>
                           {% endfor %}
                       </select>
-
-
-
                     </p>
                     <p class="generic">
                       <span class="plabel">Country:</span>
@@ -308,7 +309,13 @@
                     </p>
                     <p class="generic">
                       <span class="plabel">Marital Status:</span>
-                      <input type="text" placeholder="Marital Status" name="marital_status" value="{{ profile.marital_status }}">
+                      <select type="text" placeholder="Marital Status" name="marital_status" >
+                          {% for key, value in choices.marital_status %}
+                            <option value="{{ key }}"
+                              {% if key == profile.marital_status %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
                     </p>
                   </div>
                 </div>
