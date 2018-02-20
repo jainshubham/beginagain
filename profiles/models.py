@@ -216,7 +216,10 @@ class Profile(AbstractBaseUser, PermissionsMixin):
         # get all members of the class
         choices = {}
         for key in Profile._meta.get_fields():
-            choices[key] = key.choices
+            try:
+                choices[key] = key.choices
+            except AttributeError:
+                pass
         return choices
 
 
