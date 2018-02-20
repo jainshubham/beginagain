@@ -61,10 +61,17 @@ class MyProfile(ListView):
         for key in Profile._meta.get_fields():
             value = request.POST.get(key.name)
             if key.name == 'images' and value:
+                print("images: {}".format(value))
                 value = key.upload_to + '/' + value
                 setattr(instance, key.name, value)
-            if key.name in ['height', 'weight']:
+            elif key.name in ['height', 'weight']:
                 setattr(instance, key.name, value.strip(' g').strip(' m'))
+            elif value is not None and key.name:
+                try:
+                    print("{}, {}, {}, {}".format(key, type(key), value, type(value)))
+                    setattr(instance, key.name, value)
+                except:
+                    print(key.name)
         instance.save()
         return HttpResponseRedirect('.')
 

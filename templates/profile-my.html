@@ -44,7 +44,7 @@
           <div class="complete-profile-wrapper saved-profile col-sm-8">
             <div class="profile-card">
               <div class="complete-profile-head">
-                <img class="ppic" src={{ profile.images.url }}>
+                <img class="ppic" {% if key == profile.images %} src={{ profile.images.url }} {% endif %}>
                 <i class="fa fa-pencil-square-o edit-profile-ico" aria-hidden="true"></i>
                 <div class="complete-profile-pname">
                   My profile
@@ -166,7 +166,7 @@
               {% csrf_token %}
               <div class="profile-card">
                 <div class="complete-profile-head">
-                  <img class="ppic" src="{{ profile.images.url }}">
+                  <img class="ppic" {% if key == profile.images %} src={{ profile.images.url }} {% endif %}>
                   <div class="save-cancel-profile-changes">
                     <button type="submit" class="btn btn-default pbtn save-profile-changes">Save</button>
                     <button class="btn btn-default pbtn cancel-profile-changes">Cancel</button>
@@ -183,11 +183,12 @@
                 </div>
                 <div class="profile-body">
                   <div class="pbio peditable-bio">
+                  <img class="ppic" {% if key == profile.images %} src={{ profile.images.url }} {% endif %}>
 
-                    <p class="file-upload">Currently: <a href="{{ profile.images.url }}">
+                    <p class="file-upload">Currently: <a {% if key == profile.images %} href="{{ profile.images.url }}" {% endif %} >
                         {{ profile.images.url }}</a>
                         <br>
-                    Change: <input type="file" name="images" placeholder="Image" value="{{ profile.images.url }}>
+                    Change: <input type="file" name="images" placeholder="Image" value="{{ profile.images.url}}">
                     </p>
                     <p class="pAge">
                       <span class="plabel">First Name:</span>
@@ -340,7 +341,7 @@
               {% for profile in profiles %}
             <div class="profile-card">
               <div class="profile-head">
-                <img class="ppic" src="{{ profile.images.url }}">
+                <img class="ppic" src="{{ profile.images }}">
                 <span class="pname">
                   {{ profile.first_name}} {{ profile.last_name }}
                   <div><span class="pfage">{{profile.age}} years,</span><span class="ploc">{{profile.city}}</span></div>
