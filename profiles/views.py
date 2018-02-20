@@ -44,6 +44,7 @@ class MyProfile(ListView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
         context['profile'] = get_object_or_404(Profile, id=self.request.user.id)
+        context['choices'] = Profile.get_choices()
         context['profiles'] = Profile.objects.all()
         return context
 

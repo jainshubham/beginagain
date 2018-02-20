@@ -210,3 +210,13 @@ class Profile(AbstractBaseUser, PermissionsMixin):
         """
 
         return True
+
+    @classmethod
+    def get_choices(cls):
+        # get all members of the class
+        choices = {}
+        for key in Profile._meta.get_fields():
+            choices[key] = key.choices
+        return choices
+
+

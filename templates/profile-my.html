@@ -278,8 +278,17 @@
                       <input type="text" placeholder="Drinking" name="drinking_habit" value="{{ profile.drinking_habit }}">
                     </p>
                     <p class="generic">
-                      <span class="plabel">Smoking:</span>
-                      <input type="text" placeholder="Smoking" name="smoking_habit" value="{{ profile.smoking_habit }}">
+                      <span class="plabel">Smoking: </span>
+                      <input type="text" placeholder="Smoking" name="smoking_habit">
+
+                      <select >{% for key, value in choices.smoking_habit %}
+                          <option value="{{ key }}">{{ value }}</option>
+                      </select>
+
+                      <button type="button" id="btn" >Create</button>
+                      {% endfor %}
+
+
                     </p>
                     <p class="generic">
                       <span class="plabel">Country:</span>
