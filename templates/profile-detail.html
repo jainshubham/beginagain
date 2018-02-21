@@ -50,7 +50,7 @@
                                 <div class="profile-card">
                                     <div class="complete-profile-head">
                                         {% if profile.images %}
-                                        <img class="ppic" src="{% static profile.images.url %}">
+                                        <img class="ppic" src="{{ profile.images.url }}">
                                         {% endif %}
                                         <div class="complete-profile-pname"> {{ profile.first_name  }} {{ profile.last_name  }}
                                             <div><span class="ploc"> {{ profile.location  }} </span></div>
