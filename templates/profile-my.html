@@ -233,6 +233,11 @@
                       <span class="plabel">Email:</span>
                       <input type="email" placeholder="Email Id" name="email" value="{{ profile.email }}">
                     </p>
+                    <!--
+                    <p class="pemail">
+                      <span class="plabel">Time of Birth:</span>
+                      <input type="time" placeholder="Time of Birth" name="birth_date_time" value="{{ profile.birth_date_time }}">
+                    </p> -->
                     <p class="pcontactno">
                       <span class="plabel">Contact no:</span>
                       <input type="number" placeholder="Contact no" name="contact_no" value="{{ profile.contact_no }}">
@@ -361,6 +366,14 @@
                             </option>
                           {% endfor %}
                       </select>
+                    </p>
+                    <p class="file-upload" >
+                        {% if profile.documents %}
+                          Currently: <a  href="{{ profile.documents.url }}" >
+                        {{ profile.documents.url }} </a>
+                        <br>
+                         {% endif %}
+                    Change: <input type="file" name="documents" placeholder="Documents" value="{{ profile.documents }}">
                     </p>
                   </div>
                 </div>
