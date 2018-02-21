@@ -222,7 +222,7 @@
                     </p>
                     <p class="pprof">
                       <span class="plabel">Serving:</span>
-                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving | yesno:"Yes,No"  }}">
+                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving }}">
                     </p>
                     <p class="pprof">
                       <span class="plabel">Profession:</span>
@@ -399,7 +399,7 @@
               </div>
               <div class="profile-body">
                 <a href="/profiles/{{profile.id}}" class="pbtn view-full-profile">View full profile</a>
-                <a href="#" class="pbtn">I'm interested</a>
+                <a href="../../profiles/{{profile.id}}/show-interest" class="pbtn">I'm interested</a>
               </div>
             </div>
             {% endfor %}
