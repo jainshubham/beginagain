@@ -150,7 +150,7 @@
                   </p>
                     <p class="generic">
                     <span class="plabel">Is Serving:</span>
-                    <span class="pcard-val">{{ profile.is_serving  }}</span>
+                    <span class="pcard-val">{{ profile.is_serving | yesno:"Yes,No"  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">State:</span>
@@ -223,7 +223,7 @@
                     </p>
                     <p class="pprof">
                       <span class="plabel">Serving:</span>
-                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving }}">
+                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving | yesno:"Yes,No"  }}">
                     </p>
                     <p class="pprof">
                       <span class="plabel">Profession:</span>
@@ -232,10 +232,6 @@
                     <p class="pemail">
                       <span class="plabel">Email:</span>
                       <input type="email" placeholder="Email Id" name="email" value="{{ profile.email }}">
-                    </p>
-                    <p class="pemail">
-                      <span class="plabel">Time of Birth:</span>
-                      <input type="email" placeholder="Time of Birth" name="birth_date_time" value="{{ profile.birth_date_time }}">
                     </p>
                     <p class="pcontactno">
                       <span class="plabel">Contact no:</span>
