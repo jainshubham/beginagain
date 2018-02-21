@@ -18,4 +18,5 @@ def get_choices(enum_class):
     props = [m for m in members if not(m[0][:2] == '__')]
     # format into django choice tuple
     choices = tuple([(p[1].value, p[0].replace('_', ' ').title()) for p in props])
+
     return choices

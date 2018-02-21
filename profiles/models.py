@@ -153,9 +153,9 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     eating_habit = models.IntegerField(default=0, choices=get_choices(EatingHabit))
     drinking_habit = models.IntegerField(default=0, choices=get_choices(DrinkingHabit))
     smoking_habit = models.IntegerField(default=0, choices=get_choices(SmokingHabit))
-    country = models.CharField(max_length=30, default='Indian', blank=True)
-    city = models.CharField(max_length=30,  blank=True)
-    state = models.CharField(max_length=30,  blank=True)
+    country =  models.IntegerField(default=1, choices=tuple(Country.objects.values_list('id', 'name')))
+    city =  models.IntegerField(default=1, choices=tuple(City.objects.values_list('id', 'name')))
+    state =  models.IntegerField(default=1, choices=tuple(Region.objects.values_list('id', 'name')))
     pincode = models.CharField(max_length=30,  blank=True)
     education = models.CharField(max_length=30,  blank=True)
     contact_no = PhoneNumberField(blank=True)
@@ -232,11 +232,5 @@ class Profile(AbstractBaseUser, PermissionsMixin):
                 choices[key.name] = key.choices
             except AttributeError:
                 pass
-            if key.name == "country":
-                choices = Country.objects.values_list('name')
-            if key.name == "state":
-                choices = Region.objects.values_list('name')
-            if key.name == "city":
-                choices = City.objects.values_list('name')
         return choices
 
