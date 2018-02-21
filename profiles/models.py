@@ -26,7 +26,9 @@ TODO: Intro, image saved on upload
 TODO: Add search to allahabad
 TODO: Rating.
 TODO: Fix measurements
-TODO: Date field is not adding. 
+TODO: Date field is not adding.
+TODO: Login Error Message 
+TODO: Fix full profile view. 
 """
 
 
