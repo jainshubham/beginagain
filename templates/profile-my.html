@@ -52,7 +52,7 @@
                 </div>
               </div>
               <div class="profile-intro">
-                {{ profile.about_us  }}
+                {{ profile.about_me }}
               </div>
               <div class="profile-body">
                 <div class="pbio">
@@ -94,7 +94,7 @@
                   </p>
                   <p class="generic">
                     <span class="plabel">Birth Place:</span>
-                    <span class="pcard-val">{{ profile.place_of_birth  }}</span>
+                    <span class="pcard-val">{{ profile.get_place_of_birth_display  }}</span>
                   </p>
                   <p class="generic">
                     <span class="plabel">Body Type:</span>
@@ -145,6 +145,14 @@
                     <span class="pcard-val">{{ profile.get_city_display  }}</span>
                   </p>
                   <p class="generic">
+                    <span class="plabel">Time of Birth:</span>
+                    <span class="pcard-val">{{ profile.birth_date_time  }}</span>
+                  </p>
+                    <p class="generic">
+                    <span class="plabel">Is Serving:</span>
+                    <span class="pcard-val">{{ profile.is_serving  }}</span>
+                  </p>
+                  <p class="generic">
                     <span class="plabel">State:</span>
                     <span class="pcard-val">{{ profile.get_state_display  }}</span>
                   </p>
@@ -181,6 +189,10 @@
                          {% endif %}
                     Change: <input type="file" name="images" placeholder="Image" value="{{ profile.images }}">
                     </p>
+                    <p class="profile-intro">
+                      <span class="plabel">About Me:</span>
+                      <input type="text" placeholder="About Me" name="about_me" value="{{ profile.about_me }}">
+                    </p>
                     <p class="pAge">
                       <span class="plabel">First Name:</span>
                       <input type="text" placeholder="First Name" name="first_name" value="{{ profile.first_name }}">
@@ -210,6 +222,10 @@
                       <input type="text" placeholder="Education" name="education" value="{{ profile.education }}">
                     </p>
                     <p class="pprof">
+                      <span class="plabel">Serving:</span>
+                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving }}">
+                    </p>
+                    <p class="pprof">
                       <span class="plabel">Profession:</span>
                       <input type="text" placeholder="Profession" name="profession" value="{{ profile.profession }}">
                     </p>
@@ -217,13 +233,23 @@
                       <span class="plabel">Email:</span>
                       <input type="email" placeholder="Email Id" name="email" value="{{ profile.email }}">
                     </p>
+                    <p class="pemail">
+                      <span class="plabel">Time of Birth:</span>
+                      <input type="email" placeholder="Time of Birth" name="birth_date_time" value="{{ profile.birth_date_time }}">
+                    </p>
                     <p class="pcontactno">
                       <span class="plabel">Contact no:</span>
                       <input type="number" placeholder="Contact no" name="contact_no" value="{{ profile.contact_no }}">
                     </p>
                     <p class="generic">
                       <span class="plabel">Birth Place:</span>
-                      <input type="text" placeholder="Birth Place" name="place_of_birth" value="{{ profile.place_of_birth }}">
+                      <select type="text" placeholder="Birth Place" name="place_of_birth" >
+                          {% for key, value in choices.place_of_birth %}
+                            <option value="{{ key }}"
+                              {% if key == profile.place_of_birth %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
                     </p>
                     <p class="generic">
                       <span class="plabel">Body Type:</span>

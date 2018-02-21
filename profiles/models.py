@@ -20,9 +20,12 @@ TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Rel
 TODO: Register
 TODO: Add docs. 
 TODO: intersted logic
-TODO: Register via email/Forgot password.
+TODO: Register via email/Forgot password. Name email gender
 TODO: Image upload and remveing existing image not yet possible.
 TODO: Intro, image saved on upload
+TODO: Add search to allahabad
+TODO: Rating.
+TODO: Fix measurements
 """
 
 
@@ -139,7 +142,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     is_serving = models.BooleanField(choices=get_choices(ServingStatus), default=0)
     approved_on = models.DateTimeField(default=timezone.now)
     birth_date_time = models.DateTimeField(default=datetime.now()-timedelta(366*18))
-    place_of_birth = models.CharField(max_length=30, blank=True)
+    place_of_birth = models.IntegerField(default=1, choices=tuple(City.objects.values_list('id', 'name')))
     body_type = models.IntegerField(default=0, choices=get_choices(BodyType))
     height = MeasurementField(measurement=Distance, unit_choices='mc', default=100)
     weight = MeasurementField(measurement=Weight, default=60)
@@ -171,6 +174,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     interest_shown = models.ManyToManyField('self', related_name='interest_received')
     matches = models.ManyToManyField('self', related_name='matches')
+    documents = models.FileField(null=True, upload_to="profile_documents")
     objects = ProfileManager()
 
     EMAIL_FIELD = 'email'
