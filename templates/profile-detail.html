@@ -52,7 +52,7 @@
                 <img class="ppic" {% if profile.images %} src={{ profile.images.url }} {% endif %}>
                 <div class="complete-profile-pname">
                   My profile
-                  <div><span class="ploc">{{ profile.location  }}</span></div>
+                  <div><span class="ploc">{{ profile.get_city_display  }}</span></div>
                 </div>
               </div>
               <div class="profile-intro">
