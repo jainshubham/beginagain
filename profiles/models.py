@@ -11,6 +11,8 @@ from django_measurement.models import MeasurementField
 from measurement.measures import Weight, Distance
 from datetime import datetime, timedelta
 
+from cities_light.models import City, Country, Region
+
 from profiles.utils import get_choices
 
 """
@@ -20,7 +22,7 @@ TODO: Add docs.
 TODO: intersted logic
 TODO: Register via email/Forgot password.
 TODO: Image upload and remveing existing image not yet possible.
-
+TODO: Intro, image saved on upload
 """
 
 
@@ -230,5 +232,11 @@ class Profile(AbstractBaseUser, PermissionsMixin):
                 choices[key.name] = key.choices
             except AttributeError:
                 pass
+            if key.name == "country":
+                choices = Country.objects.values_list('name')
+            if key.name == "state":
+                choices = Region.objects.values_list('name')
+            if key.name == "city":
+                choices = City.objects.values_list('name')
         return choices
 
