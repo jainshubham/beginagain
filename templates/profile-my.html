@@ -166,25 +166,13 @@
               {% csrf_token %}
               <div class="profile-card">
                 <div class="complete-profile-head">
-                  <img class="ppic" {% if profile.images %} src={{ profile.images.url }} {% endif %}>
                   <div class="save-cancel-profile-changes">
                     <button type="submit" class="btn btn-default pbtn save-profile-changes">Save</button>
                     <button class="btn btn-default pbtn cancel-profile-changes">Cancel</button>
                   </div>
-                  <div class="complete-profile-pname">
-                    <input type="text" placeholder="Your name" name="{{ profile.name }}" value="My profile">
-                    <div>
-                      <input type="text" placeholder="Your city" name="profileLocation" value="{{ profile.city }}">
-                    </div>
-                  </div>
-                </div>
-                <div class="profile-intro">
-                  <textarea rows="4" cols="50">{{ profile.age }}</textarea>
                 </div>
                 <div class="profile-body">
                   <div class="pbio peditable-bio">
-                  <img class="ppic" {% if profile.images %} src={{ profile.images.url }} {% endif %}>
-
                     <p class="file-upload" >
                         {% if profile.images %}
                           Currently: <a  href="{{ profile.images.url }}" >
