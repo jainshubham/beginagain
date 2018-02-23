@@ -39,7 +39,6 @@ urlpatterns = [
     url(r'^profiles/(?P<id>\d+)/show-interest$', ShowInterest.as_view()),
     url(r'^login/$', LoginView.as_view()),
     url(r'^logout/$', LogoutView.as_view()),
-    # url(r'^logout/$', LogoutView.as_view(next_page=reverse_lazy('login'))),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -175,8 +175,8 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    interest_shown = models.ManyToManyField('self', related_name='interest_received')
-    matches = models.ManyToManyField('self', related_name='matches')
+    interest_shown = models.ManyToManyField('self', related_name='interest_received', symmetrical=False)
+    matches = models.ManyToManyField('self', related_name='matches_set', symmetrical=False)
     documents = models.FileField(null=True, upload_to="profile_documents")
     objects = ProfileManager()
 

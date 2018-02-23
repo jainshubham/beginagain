@@ -52,7 +52,7 @@ class MyProfile(ListView):
         """Not sure why post is redirecting here
 
         :param request:
-        :param args:
+        :param args:Profile
         :param kwargs:
         :return:
         """
@@ -120,6 +120,7 @@ class LogoutView(RedirectView):
 class ShowInterest(ListView):
     model = Profile
     context_object_name = 'profile'
+    template_name = 'profile-detail.html'
 
     def get_queryset(self):
         id = self.request.__dict__['user'].id
