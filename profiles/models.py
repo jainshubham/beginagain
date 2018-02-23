@@ -16,19 +16,19 @@ from cities_light.models import City, Country, Region
 from profiles.utils import get_choices
 
 """
-TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Religion
-TODO: Register
-TODO: Add docs. 
-TODO: interested logic
+TODO: Registeration
 TODO: Register via email/Forgot password. Name email gender
-TODO: Image upload and remveing existing image not yet possible.
-TODO: Intro, image saved on upload
-TODO: Add search to allahabad
-TODO: Rating.
-TODO: Fix measurements
 TODO: Date field is not adding.
 TODO: Login Error Message 
-TODO: Fix full profile view. 
+TODO: Remove matches field
+TODO: Make cities text 
+
+TODO: Add search to allahabad
+TODO: Fix measurements
+TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Religion
+TODO: Image upload and remveing existing image not yet possible.
+TODO: Intro, image saved on upload
+TODO: Rating.
 """
 
 
