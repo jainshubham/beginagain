@@ -160,7 +160,7 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     drinking_habit = models.IntegerField(default=0, choices=get_choices(DrinkingHabit))
     smoking_habit = models.IntegerField(default=0, choices=get_choices(SmokingHabit))
     country =  models.IntegerField(default=1, choices=tuple(Country.objects.values_list('id', 'name')))
-    city =  models.IntegerField(default=1, choices=tuple(City.objects.filter(country__name='India').values_list('id', 'name')))
+    city =  models.IntegerField(default=1, choices=tuple(City.objects.values_list('id', 'name')))
     state =  models.IntegerField(default=1, choices=tuple(Region.objects.values_list('id', 'name')))
     pincode = models.CharField(max_length=30,  blank=True)
     education = models.CharField(max_length=30,  blank=True)
