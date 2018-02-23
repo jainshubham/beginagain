@@ -45,7 +45,8 @@ class MyProfile(ListView):
         # Add in a QuerySet of all the books
         context['profile'] = get_object_or_404(Profile, id=self.request.user.id)
         context['choices'] = Profile.get_choices()
-        context['profiles'] = Profile.objects.all()
+        context['selected_profiles'] = Profile.objects.exclude(interest_received__id__in=self.request.user.id)
+        context['new_profiles'] = Profile.objects.filter(interest_received__id__in=self.request.user.id)
         return context
 
     def post(self, request, *args, **kwargs):
