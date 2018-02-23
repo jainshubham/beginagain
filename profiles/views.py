@@ -123,6 +123,7 @@ class ShowInterest(ListView):
     template_name = 'profile-detail.html'
 
     def get_queryset(self):
+        print("interst shown")
         id = self.request.__dict__['user'].id
         instance = Profile.objects.get(id=id)
         target_instance = Profile.objects.get(id=self.kwargs['id'])
