@@ -243,3 +243,9 @@ class Profile(AbstractBaseUser, PermissionsMixin):
                 pass
         return choices
 
+
+    def get_matches(self):
+        # get all members of the class
+        interest_shown = set(self.interest_shown.all())
+        interest_recieved = set(self.interest_received.all())
+        return list(interest_recieved.intersection(interest_shown))
