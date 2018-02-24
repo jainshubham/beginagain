@@ -22,6 +22,7 @@ TODO: Date field is not adding.
 TODO: Login Error Message 
 TODO: Remove matches field
 TODO: Make cities text 
+TODO: Fix full profile view in lising.
 
 TODO: Add search to allahabad
 TODO: Fix measurements
@@ -176,7 +177,6 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
     interest_shown = models.ManyToManyField('self', related_name='interest_received', symmetrical=False)
-    matches = models.ManyToManyField('self', related_name='matches_set', symmetrical=False)
     documents = models.FileField(null=True, upload_to="profile_documents")
     objects = ProfileManager()
 
