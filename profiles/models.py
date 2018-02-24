@@ -23,6 +23,7 @@ TODO: Login Error Message
 TODO: Make cities text 
 TODO: Fix full profile view in lising.
 TODO: clicking on interest shown should return to home page
+TODO: interst shown not visible in any profile detail page
 
 TODO: Add search to allahabad
 TODO: Fix measurements
