@@ -22,7 +22,6 @@ TODO: Date field is not adding.
 TODO: Login Error Message 
 TODO: Make cities text 
 TODO: Fix full profile view in lising.
-TODO: fix interst shown logic
 TODO: clicking on interest shown should return to home page
 
 TODO: Add search to allahabad

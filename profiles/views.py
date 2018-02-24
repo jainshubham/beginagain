@@ -48,8 +48,8 @@ class ProfileView(ListView):
         # context['profile'] = get_object_or_404(Profile, id=self.request.user.id)
         # context['choices'] = Profile.get_choices()
         # if they have received interest from us.
-        context['profile'] = Profile.objects.filter(id__in=self.kwargs['id'])
-        context['my_profile'] = Profile.objects.filter(id__in=self.request.user.id)
+        context['profile'] = Profile.objects.filter(id=self.kwargs['id'])
+        context['my_profile'] = Profile.objects.filter(id=self.request.user.id)
         return context
 
 
