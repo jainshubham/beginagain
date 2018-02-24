@@ -39,7 +39,7 @@
       <!-- Menu -->
       <!-- create profile or signup Menu -->
       <!-- Banner -->
-      {% for profile in profiles %}
+      {% for profile in new_profiles %}
       <section id="banner-profile-list" class="banner-profile-list">
         <div class="inner">
           <div class="profile-wrapper">
@@ -69,7 +69,39 @@
           </div>
         </div>
       </section>
+
       {% endfor %}
+          {% for profile in selected_profiles %}
+      <section id="banner-profile-list" class="banner-profile-list">
+        <div class="inner">
+          <div class="profile-wrapper">
+            <div class="profile-card">
+              <div class="profile-head">
+                {% if profile.images %}
+                <img class="ppic" src={{ profile.images.url }}>
+                {% endif %}
+                <span class="pname">
+                  {{ profile.first_name }} {{ profile.last_name }}
+                  <div><span class="pfage"> {{ profile.age }} years,</span><span
+                    class="ploc">{{ profile.get_city_display }}</span></div>
+                </span>
+                <p class="star-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+              </div>
+              <div class="profile-body">
+                <a href="../profiles/{{ profile.id}}" class="pbtn view-full-profile">View full profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endfor %}
+
       <!-- Main -->
     </div>
     <!-- Scripts -->

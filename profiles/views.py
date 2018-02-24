@@ -14,20 +14,43 @@ class ProfileListView(ListView):
     context_object_name = 'profiles'
     template_name = 'profiles-listing.html'
 
-    def get_queryset(self):
+    # def get_queryset(self):
+    #     gender = not self.request.user.gender
+    #     # queryset = Profile.objects.filter(gender=gender)
+    #     queryset = Profile.objects.all()
+    #     return queryset
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
         gender = not self.request.user.gender
-        # queryset = Profile.objects.filter(gender=gender)
-        queryset = Profile.objects.all()
-        return queryset
+        # Add in a QuerySet of all the books
+        # context['profile'] = get_object_or_404(Profile, id=self.request.user.id)
+        # context['choices'] = Profile.get_choices()
+        # if they have received interest from us.
+        context['selected_profiles'] = Profile.objects.filter(interest_received__id=self.request.user.id)
+        context['new_profiles'] = Profile.objects.exclude(interest_received__id=self.request.user.id)
+        return context
 
 
 class ProfileView(ListView):
     model = Profile
     context_object_name = 'profile'
     template_name = 'profile-detail.html'
+    #
+    # def get_queryset(self):
+    #     return get_object_or_404(Profile, id=self.kwargs['id'])
 
-    def get_queryset(self):
-        return get_object_or_404(Profile, id=self.kwargs['id'])
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        # context['profile'] = get_object_or_404(Profile, id=self.request.user.id)
+        # context['choices'] = Profile.get_choices()
+        # if they have received interest from us.
+        context['profile'] = Profile.objects.filter(id__in=self.kwargs['id'])
+        context['my_profile'] = Profile.objects.filter(id__in=self.request.user.id)
+        return context
 
 
 class MyProfile(ListView):

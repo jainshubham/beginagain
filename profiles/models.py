@@ -20,9 +20,10 @@ TODO: Registeration
 TODO: Register via email/Forgot password. Name email gender
 TODO: Date field is not adding.
 TODO: Login Error Message 
-TODO: Remove matches field
 TODO: Make cities text 
 TODO: Fix full profile view in lising.
+TODO: fix interst shown logic
+TODO: clicking on interest shown should return to home page
 
 TODO: Add search to allahabad
 TODO: Fix measurements
@@ -30,6 +31,7 @@ TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Rel
 TODO: Image upload and remveing existing image not yet possible.
 TODO: Intro, image saved on upload
 TODO: Rating.
+TODO: Why datetime field in every migration
 """
 
 

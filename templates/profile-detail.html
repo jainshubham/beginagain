@@ -169,7 +169,9 @@
                   </p>
 
                                         </div>
+                                        {% if profile not in my_profile.interest_shown.all %}
                                         <a href="../../profiles/{{profile.id}}/show-interest" class="pbtn">I'm interested</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                         </div>
