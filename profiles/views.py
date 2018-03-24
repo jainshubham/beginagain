@@ -123,7 +123,7 @@ class LoginView(ListView):
         if not user:
             raise Exception("provide valid email and password.")
         login(request, user)
-        return HttpResponseRedirect('profiles/me/')
+        return HttpResponseRedirect('profiles/')
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
