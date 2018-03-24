@@ -3936,40 +3936,45 @@
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
-		-moz-pointer-events: none;
-		-webkit-pointer-events: none;
-		-ms-pointer-events: none;
-		pointer-events: none;
-		background: rgba(36, 41, 67, 0.9);
+		background: url(../images/hero2.jpg);
 		box-shadow: none;
 		height: 100%;
 		left: 0;
-		opacity: 0;
 		overflow: hidden;
 		padding: 3em 2em;
 		position: fixed;
 		top: 0;
-		visibility: hidden;
 		width: 100%;
 		z-index: 10002;
 }
 #create-profile-dialog form {
 	width: 95%;
-	padding: 4em;
-	border: 1px solid #666;
-	background: #fff;
+	padding: 7em 4em 4em 4em;
+	background: rgba(36, 41, 67, 0.89);
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
         font-size: 16px;
+        position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+#create-profile-dialog form>div {
+  max-width: 900px;
+  margin: 20px auto;
 }
 #create-profile-dialog input {
     width: 100%;
     border: 1px solid #ececec;
+    background: #fff;
     box-shadow: none;
     height: auto;
     padding: 12px;
     color: #000;
+    border-radius: 0;
 }
 #create-profile-dialog input[type="radio"] {
   width: auto;
@@ -3984,7 +3989,7 @@
  }
 
 #create-profile-dialog label {
-	color: #333;
+	color: #fff;
 }
 
 #banner.major {
@@ -4258,13 +4263,12 @@ My profile page style
 /*=============================
   Login form style
 ===========================*/
-.login-wrapper {
-  max-width: 600px;
+
+.login-wrapper>div {
   background: #fff;
   color: #000;
-  padding: 2em 3em;
-  margin: 0 auto;
-  border-radius: 3px;
+	padding: 2em;
+  height: 90vh;
 }
 .login-wrapper input {
   max-width: 100%;
@@ -4285,6 +4289,7 @@ My profile page style
   width: 100%;
   border: 1px solid #21ba45;
   box-shadow: none;
+  letter-spacing: 3px;
   text-decoration: none;
 }
 .btn-submit, .btn-submit:hover, .btn-submit:focus {
@@ -4314,6 +4319,7 @@ a.logo {
 .btn-cancel {
   color: #000;
   text-transform: uppercase;
+  background: #fff;
   border: 1px solid #ececec;
   padding: 12px 15px;
 }
@@ -4326,3 +4332,67 @@ nav a:hover {
   color: inherit;
   text-decoration: none;
 }
+
+#login-main-wrapper {
+	width: 100%;
+    height: 100vh;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+	padding: 2em;
+}
+.login-desc-txt {
+	background: #242943;
+	font-size: 18px;
+	line-height: 1.4;
+}
+.login-desc-txt>div {
+  padding: 4em 2em;
+}
+.login-desc-txt p {
+	margin-bottom: 20px;
+}
+#login-main-wrapper>div {
+	-webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */
+    flex: 1;
+	padding: 2em;
+}
+#login-main-wrapper {
+	height: 100vh;
+}
+.login-wrapper {
+  height: 90%;
+  padding: 2em;
+}
+.register-btn, .register-btn:hover, .register-btn:focus {
+  color: #21ba45;
+  border: 1px solid #21ba45;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-block;
+  border-radius: 1px;
+  letter-spacing: 3px;
+  outline: none;
+  box-shadow: none;
+}
+.register-form-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    padding: 16px 20px 15px 30px;
+    background: #A64049;
+}
+.register-form-header a {
+  font-size: 16px;
+}
+.register-form-header a strong {
+  background: #F06543 !important;
+  padding: 3px 0.125em 3px 0.375em;
+}
+
+
