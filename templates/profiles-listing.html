@@ -1,91 +1,112 @@
 <html>
-            {% load static %}
-
-<head>
+  {% load static %}
+  <head>
     <title>Begin Again</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lte IE 8]><script src={% static "js/ie/html5shiv.js" %}></script><![endif]-->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href={% static "css/main.css" %}>
-    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-</head>
-<body class="body-loggedIn">
-
-<!-- Wrapper -->
-<div id="profile-banner-wrapper">
-
-    <!-- Header -->
-    <header id="header" class="alt header-loggedIn">
-        <a href="index.html" class="logo">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVEhL7VM9TFNRFH4QZfQv9gclj0fpUHHQ+DMYDYS+VxBdYMABcCAmLG5KFxwaEhNYRFp4DzQaDWEwOJA2bGwaoiY6SOIEMRJ+TIRQ+h4lBcq9nnveqRTTIgmGiS85ae89537f+XvSIQ4UnmdrcplhNe4w3WpRdLNH0RNdFLY/AGkTGM9puskobH/wGJYfsh7PWJme+CbIhYiiW5sUtjuYo7qcOdUusDGwGHNqj9jp2mJy74BHT7SCQDpTCYiskCs/mCtwn7m0Te7SeLbBncmd/noKQ+wUMF/tSYQ5Aw1Axoh0gjm09p/ldzqf10fmg21R/qAtttXQ8aXXGzYdfwlElBdrpf8U4ZJUAMTTKODUXnIpVIi9N6xfNtG2KYaZAuIt+2xGJM4LaON2F2Fu7ZxdgZrmJ7XjysDqBcg0aT80Z250TQ93twzxqsdT24ID1qgQEO+94WQJrPEyiP5Awlxg7kAltWlOnKGCMRQwrAlveOkYr2gsEv71M3XcF4l/Rd+AOYmP9wqxUSTCxq+HZMh+QxB5BpNX0O9Wr9qtVNcbQ5/lzMrKxooHCfJBtIX+IqBVk4Joxtf8HdsBVjHCi0QckH+0k1CjIhZE5rCafrMSH+cCd6oaPFxmbn8dnu3BjwqiZMlt7u1PoMi7a+3DsAizVEWSF9f4Sp/GT2QGL0fiZUiYC5DRED1MMXf1LSAKU6YMLNUcnECRuw/f4xzgbgGWo0oK8UKo4jVWoVufiC43uFR1BIjfklCaBLagmlbmvul4U9vd4+2LY7YXnyzMn+9d7FSMRBA26IO4E5sn961eIrr84NLloyA0JQRsEa2HXIhS3ayHbE0kzTK4W4RfjcLyA2fwp0X0lWPr7BllIA+uFkP/O6CCKKxzTFQjZkLu3SGy3m5R4F5W61LMEaihsP0ByJpAaEPMQJzFjGDjRkBsVnwzGPQ/wF21Cv1F4DKc8p+l4yEOCpL0G7lLFN00VaqqAAAAAElFTkSuQmCC">
-            <strong>Begin</strong>
-            <span>Again</span></a>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="css/ie9.css" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/ie8.css" />
+    <![endif]-->
+  </head>
+  <body class="body-loggedIn">
+    <!-- Wrapper -->
+    <div id="profile-banner-wrapper">
+      <!-- Header -->
+      <header id="header" class="alt header-loggedIn">
+        <a href="../../profiles/me/" class="logo">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVEhL7VM9TFNRFH4QZfQv9gclj0fpUHHQ+DMYDYS+VxBdYMABcCAmLG5KFxwaEhNYRFp4DzQaDWEwOJA2bGwaoiY6SOIEMRJ+TIRQ+h4lBcq9nnveqRTTIgmGiS85ae89537f+XvSIQ4UnmdrcplhNe4w3WpRdLNH0RNdFLY/AGkTGM9puskobH/wGJYfsh7PWJme+CbIhYiiW5sUtjuYo7qcOdUusDGwGHNqj9jp2mJy74BHT7SCQDpTCYiskCs/mCtwn7m0Te7SeLbBncmd/noKQ+wUMF/tSYQ5Aw1Axoh0gjm09p/ldzqf10fmg21R/qAtttXQ8aXXGzYdfwlElBdrpf8U4ZJUAMTTKODUXnIpVIi9N6xfNtG2KYaZAuIt+2xGJM4LaON2F2Fu7ZxdgZrmJ7XjysDqBcg0aT80Z250TQ93twzxqsdT24ID1qgQEO+94WQJrPEyiP5Awlxg7kAltWlOnKGCMRQwrAlveOkYr2gsEv71M3XcF4l/Rd+AOYmP9wqxUSTCxq+HZMh+QxB5BpNX0O9Wr9qtVNcbQ5/lzMrKxooHCfJBtIX+IqBVk4Joxtf8HdsBVjHCi0QckH+0k1CjIhZE5rCafrMSH+cCd6oaPFxmbn8dnu3BjwqiZMlt7u1PoMi7a+3DsAizVEWSF9f4Sp/GT2QGL0fiZUiYC5DRED1MMXf1LSAKU6YMLNUcnECRuw/f4xzgbgGWo0oK8UKo4jVWoVufiC43uFR1BIjfklCaBLagmlbmvul4U9vd4+2LY7YXnyzMn+9d7FSMRBA26IO4E5sn961eIrr84NLloyA0JQRsEa2HXIhS3ayHbE0kzTK4W4RfjcLyA2fwp0X0lWPr7BllIA+uFkP/O6CCKKxzTFQjZkLu3SGy3m5R4F5W61LMEaihsP0ByJpAaEPMQJzFjGDjRkBsVnwzGPQ/wF21Cv1F4DKc8p+l4yEOCpL0G7lLFN00VaqqAAAAAElFTkSuQmCC">
+        <strong>Begin</strong>
+        <span>Again</span></a>
         <nav class="loggedIn-account-nav">
-							<span href="#" class="loggedIn-account-ico">My Profile
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                <ul class="account-dropdown">
-                                    <li><a href="my-complete-profile.html" class="my-profile-settings">Settings</a></li>
-                                    <li>Logout</li>
-                                </ul>
-                            </span>
+          <span href="#" class="loggedIn-account-ico">
+            My Profile
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <ul class="account-dropdown">
+              <li><a href="/logout/" class="my-profile-settings">Logout</a></li>
+            </ul>
+          </span>
         </nav>
-    </header>
+      </header>
+      <!-- Menu -->
+      <!-- create profile or signup Menu -->
+      <!-- Banner -->
+      {% for profile in new_profiles %}
+      <section id="banner-profile-list" class="banner-profile-list">
+        <div class="inner">
+          <div class="profile-wrapper">
+            <div class="profile-card">
+              <div class="profile-head">
+                {% if profile.images %}
+                <img class="ppic" src={{ profile.images.url }}>
+                {% endif %}
+                <span class="pname">
+                  {{ profile.first_name }} {{ profile.last_name }}
+                  <div><span class="pfage"> {{ profile.age }} years,</span><span
+                    class="ploc">{{ profile.get_city_display }}</span></div>
+                </span>
+                <p class="star-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+              </div>
+              <div class="profile-body">
+                <a href="../profiles/{{ profile.id}}" class="pbtn view-full-profile">View full profile</a>
+                <a href="#" class="pbtn">I'm interested</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <!-- Menu -->
+      {% endfor %}
+          {% for profile in selected_profiles %}
+      <section id="banner-profile-list" class="banner-profile-list">
+        <div class="inner">
+          <div class="profile-wrapper">
+            <div class="profile-card">
+              <div class="profile-head">
+                {% if profile.images %}
+                <img class="ppic" src={{ profile.images.url }}>
+                {% endif %}
+                <span class="pname">
+                  {{ profile.first_name }} {{ profile.last_name }}
+                  <div><span class="pfage"> {{ profile.age }} years,</span><span
+                    class="ploc">{{ profile.get_city_display }}</span></div>
+                </span>
+                <p class="star-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+              </div>
+              <div class="profile-body">
+                <a href="../profiles/{{ profile.id}}" class="pbtn view-full-profile">View full profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endfor %}
 
-    <!-- create profile or signup Menu -->
-
-    <!-- Banner -->
-
-        {% for profile in profiles %}
-
-            <section id="banner-profile-list" class="banner-profile-list">
-                <div class="inner">
-                    <div class="profile-wrapper">
-                        <div class="profile-card">
-                            <div class="profile-head">
-                                {% if profile.images %}
-                                    <img class="ppic" src={{ profile.images.url }}>
-                                {% endif %}
-                                <span class="pname"> {{ profile.first_name }} {{ profile.last_name }}
-
-                                            <div><span class="pfage"> {{ profile.age }} years,</span><span
-                                                    class="ploc">{{ profile.location }}</span></div>
-                                        </span>
-                                <p class="star-rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </p>
-                            </div>
-                            <div class="profile-body">
-                                <a href="{{ profile.id}}" class="pbtn view-full-profile">View full profile</a>
-                                <a href="#" class="pbtn">I'm interested</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        {% endfor %}
-
-
-
-    <!-- Main -->
-
-</div>
-
-<!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="{% static "js/main.js" %}"></script>
-
-
-</body>
+      <!-- Main -->
+    </div>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static "js/main.js" %}"></script>
+  </body>
 </html>

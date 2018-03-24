@@ -9,14 +9,36 @@ from enum import unique, IntEnum
 from phonenumber_field.modelfields import PhoneNumberField
 from django_measurement.models import MeasurementField
 from measurement.measures import Weight, Distance
+from datetime import datetime, timedelta
+
+from cities_light.models import City, Country, Region
 
 from profiles.utils import get_choices
+
+"""
+TODO: Registeration
+TODO: Register via email/Forgot password. Name email gender
+TODO: Date field is not adding.
+TODO: Login Error Message 
+TODO: Make cities text 
+TODO: Fix full profile view in lising.
+TODO: clicking on interest shown should return to home page
+TODO: interst shown not visible in any profile detail page
+
+TODO: Add search to allahabad
+TODO: Fix measurements
+TODO: Django Cities, counties, state, mother tongue, cast gotra star, Zodiac Religion
+TODO: Image upload and remveing existing image not yet possible.
+TODO: Intro, image saved on upload
+TODO: Rating.
+TODO: Why datetime field in every migration
+"""
 
 
 @unique
 class EatingHabit(IntEnum):
-    VEGETARIAN = 1
-    NON_VEGETARIAN = 2
+    VEGETARIAN = 0
+    NON_VEGETARIAN = 1
 
 
 @unique
@@ -121,50 +143,56 @@ class Profile(AbstractBaseUser, PermissionsMixin):
     """ The basic matrimonial profile of a person on our app.
 
     """
-    gender = models.IntegerField(default=0, null=True, choices=get_choices(Gender))
-    age = models.PositiveIntegerField(null=True)
+    gender = models.IntegerField(default=0, null=False, choices=get_choices(Gender))
+    age = models.PositiveIntegerField(null=True, default=18)
     is_serving = models.BooleanField(choices=get_choices(ServingStatus), default=0)
     approved_on = models.DateTimeField(default=timezone.now)
-    birth_date_time = models.DateTimeField(null=True)
-    place_of_birth = models.CharField(max_length=30, null=True)
-    body_type = models.IntegerField(default=0, null=True, choices=get_choices(BodyType))
-    height = MeasurementField(measurement=Distance, unit_choices='mc', null=True)
-    weight = MeasurementField(measurement=Weight, null=True)
-    mother_tongue = models.CharField(max_length=30, null=True)
-    religion = models.CharField(max_length=30, null=True)
-    physical_status = models.IntegerField(default=0, null=True, choices=get_choices(AIS))
-    caste = models.CharField(max_length=30, null=True)
-    gothram = models.CharField(max_length=30, null=True)
-    zodiac = models.CharField(max_length=30, null=True)
-    star = models.CharField(max_length=30, null=True)
-    eating_habit = models.IntegerField(default=0, null=True, choices=get_choices(EatingHabit))
-    drinking_habit = models.IntegerField(default=0, null=True, choices=get_choices(DrinkingHabit))
-    smoking_habit = models.IntegerField(default=0, null=True, choices=get_choices(SmokingHabit))
-    country = models.CharField(max_length=30, null=True)
-    city = models.CharField(max_length=30, null=True)
-    state = models.CharField(max_length=30, null=True)
-    pincode = models.CharField(max_length=30, null=True)
-    education = models.CharField(max_length=30, null=True)
+    birth_date_time = models.DateTimeField(default=datetime.now()-timedelta(366*18))
+    place_of_birth = models.IntegerField(default=1, choices=tuple(City.objects.values_list('id', 'name')))
+    body_type = models.IntegerField(default=0, choices=get_choices(BodyType))
+    height = MeasurementField(measurement=Distance, unit_choices='mc', default=100)
+    weight = MeasurementField(measurement=Weight, default=60)
+    mother_tongue = models.CharField(max_length=30, blank=True)
+    religion = models.CharField(max_length=30, blank=True)
+    physical_status = models.IntegerField(default=3, choices=get_choices(AIS))
+    caste = models.CharField(max_length=30, blank=True)
+    gothram = models.CharField(max_length=30, blank=True)
+    zodiac = models.CharField(max_length=30, blank=True)
+    star = models.CharField(max_length=30, blank=True)
+    eating_habit = models.IntegerField(default=0, choices=get_choices(EatingHabit))
+    drinking_habit = models.IntegerField(default=0, choices=get_choices(DrinkingHabit))
+    smoking_habit = models.IntegerField(default=0, choices=get_choices(SmokingHabit))
+    country =  models.IntegerField(default=1, choices=tuple(Country.objects.values_list('id', 'name')))
+    city =  models.IntegerField(default=1, choices=tuple(City.objects.values_list('id', 'name')))
+    state =  models.IntegerField(default=1, choices=tuple(Region.objects.values_list('id', 'name')))
+    pincode = models.CharField(max_length=30,  blank=True)
+    education = models.CharField(max_length=30,  blank=True)
     contact_no = PhoneNumberField(blank=True)
-    images = models.ImageField(null=True, upload_to="profile_pictures", default='profile_pictures/male.jpeg')
-    about_me = models.CharField(max_length=500, null=True)
-    require_details = models.CharField(max_length=30, null=True)
-    marital_status = models.IntegerField(default=0, null=True, choices=get_choices(MaritalStatus))
-    username = models.CharField(max_length=150)
+    images = models.ImageField(null=True, upload_to="profile_pictures")
+    about_me = models.CharField(max_length=500,  blank=True)
+    require_details = models.CharField(max_length=30,  blank=True)
+    marital_status = models.IntegerField(default=0, choices=get_choices(MaritalStatus))
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     email = models.EmailField(blank=True, unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    # interested_suitors = models.ManyToManyField('self', related_name='intersted_suitors')
-    # interesting_suitors = models.ManyToManyField('self', related_name='interesting_suitors')
-    # matched_suitors = models.ManyToManyField('self', related_name='matched_suitors')
+    interest_shown = models.ManyToManyField('self', related_name='interest_received', symmetrical=False)
+    documents = models.FileField(null=True, upload_to="profile_documents")
     objects = ProfileManager()
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
     # REQUIRED_FIELDS = ['name']
+
+    def save(self, *args, **kwargs):
+        # if self.gender == 1 and self.images == "profile_pictures/male.jpeg":
+        #     self.images = "profile_pictures/female.jpeg"
+        # else:
+        #     self.images = "profile_pictures/male.jpeg"
+        super(Profile, self).save(*args, **kwargs)
+
 
     def get_full_name(self):
         """ The user is identified by their email address
@@ -203,3 +231,21 @@ class Profile(AbstractBaseUser, PermissionsMixin):
         """
 
         return True
+
+    @classmethod
+    def get_choices(cls):
+        # get all members of the class
+        choices = {}
+        for key in Profile._meta.get_fields():
+            try:
+                choices[key.name] = key.choices
+            except AttributeError:
+                pass
+        return choices
+
+
+    def get_matches(self):
+        # get all members of the class
+        interest_shown = set(self.interest_shown.all())
+        interest_recieved = set(self.interest_received.all())
+        return list(interest_recieved.intersection(interest_shown))

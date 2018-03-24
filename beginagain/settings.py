@@ -26,7 +26,8 @@ SECRET_KEY = 'xc60rt4!!tb2ft=&gib8fk+(*qgz_a$hdq=%xr$1)vva+1mhp!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.172.204.147']
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
-    'django_extensions'
+    'django_extensions',
+    'cities_light'
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

@@ -1,243 +1,442 @@
 <html>
-            {% load static %}
+  {% load static %}
+  <head>
+    <title>Begin Again - Complete Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lte IE 8]><script src="{% static "js/ie/html5shiv.js" %} ></script><![endif]-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href={% static "css/main.css" %}>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="css/ie9.css" />
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/ie8.css" />
+    <![endif]-->
+  </head>
+  <body class="body-loggedIn">
+    <!-- Wrapper -->
+    <div id="complete-profile-banner-wrapper">
+      <!-- Header -->
+      <header id="header" class="alt header-loggedIn">
+        <a href="../../profiles/me/" class="logo">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVEhL7VM9TFNRFH4QZfQv9gclj0fpUHHQ+DMYDYS+VxBdYMABcCAmLG5KFxwaEhNYRFp4DzQaDWEwOJA2bGwaoiY6SOIEMRJ+TIRQ+h4lBcq9nnveqRTTIgmGiS85ae89537f+XvSIQ4UnmdrcplhNe4w3WpRdLNH0RNdFLY/AGkTGM9puskobH/wGJYfsh7PWJme+CbIhYiiW5sUtjuYo7qcOdUusDGwGHNqj9jp2mJy74BHT7SCQDpTCYiskCs/mCtwn7m0Te7SeLbBncmd/noKQ+wUMF/tSYQ5Aw1Axoh0gjm09p/ldzqf10fmg21R/qAtttXQ8aXXGzYdfwlElBdrpf8U4ZJUAMTTKODUXnIpVIi9N6xfNtG2KYaZAuIt+2xGJM4LaON2F2Fu7ZxdgZrmJ7XjysDqBcg0aT80Z250TQ93twzxqsdT24ID1qgQEO+94WQJrPEyiP5Awlxg7kAltWlOnKGCMRQwrAlveOkYr2gsEv71M3XcF4l/Rd+AOYmP9wqxUSTCxq+HZMh+QxB5BpNX0O9Wr9qtVNcbQ5/lzMrKxooHCfJBtIX+IqBVk4Joxtf8HdsBVjHCi0QckH+0k1CjIhZE5rCafrMSH+cCd6oaPFxmbn8dnu3BjwqiZMlt7u1PoMi7a+3DsAizVEWSF9f4Sp/GT2QGL0fiZUiYC5DRED1MMXf1LSAKU6YMLNUcnECRuw/f4xzgbgGWo0oK8UKo4jVWoVufiC43uFR1BIjfklCaBLagmlbmvul4U9vd4+2LY7YXnyzMn+9d7FSMRBA26IO4E5sn961eIrr84NLloyA0JQRsEa2HXIhS3ayHbE0kzTK4W4RfjcLyA2fwp0X0lWPr7BllIA+uFkP/O6CCKKxzTFQjZkLu3SGy3m5R4F5W61LMEaihsP0ByJpAaEPMQJzFjGDjRkBsVnwzGPQ/wF21Cv1F4DKc8p+l4yEOCpL0G7lLFN00VaqqAAAAAElFTkSuQmCC">
+        <strong>Begin</strong>
+        <span>Again</span></a>
+        <nav class="loggedIn-account-nav">
+          <span href="#" class="loggedIn-account-ico">
+            My Profile
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <ul class="account-dropdown">
+              <li><a href="/logout/" class="my-profile-settings">Logout</a></li>
+            </ul>
+          </span>
+        </nav>
+      </header>
+      <!-- Menu -->
+      <!-- Complete profile and other profiles -->
+      <section id="complete-banner-profile-list" class="banner-profile-list">
+        <div class="row complete-profile-row">
+          <!-- Saved profie -->
+          <div class="complete-profile-wrapper saved-profile col-sm-8">
+            <div class="profile-card">
+              <div class="complete-profile-head">
+                <img class="ppic" {% if profile.images %} src={{ profile.images.url }} {% endif %}>
+                <i class="fa fa-pencil-square-o edit-profile-ico" aria-hidden="true"></i>
+                <div class="complete-profile-pname">
+                  My profile
+                  <div><span class="ploc">{{ profile.get_city_display  }}</span></div>
+                </div>
+              </div>
+              <div class="profile-intro">
+                {{ profile.about_me }}
+              </div>
+              <div class="profile-body">
+                <div class="pbio">
+                  <p class="pFirst Name">
+                    <span class="plabel">First Name:</span>
+                    <span class="pcard-val">{{ profile.first_name  }}</span>
+                  </p>
+                  <p class="pAge">
+                    <span class="plabel">Last Name:</span>
+                    <span class="pcard-val">{{ profile.last_name  }}</span>
+                  </p>
+                  <p class="pAge">
+                    <span class="plabel">Age:</span>
+                    <span class="pcard-val">{{ profile.age  }} years</span>
+                  </p>
+                  <p class="preligion">
+                    <span class="plabel">Religion:</span>
+                    <span class="pcard-val">{{ profile.religion  }}</span>
+                  </p>
+                  <p class="pzod">
+                    <span class="plabel">Zodiac:</span>
+                    <span class="pcard-val">{{ profile.zodiac  }}</span>
+                  </p>
+                  <p class="pheight">
+                    <span class="plabel">Height:</span>
+                    <span class="pcard-val">{{ profile.height  }}</span>
+                  </p>
+                  <p class="pedu">
+                    <span class="plabel">Education:</span>
+                    <span class="pcard-val">{{ profile.education  }}</span>
+                  </p>
+                  <p class="pemail">
+                    <span class="plabel">Email:</span>
+                    <span class="pcard-val">{{ profile.email  }}</span>
+                  </p>
+                  <p class="pcontactno">
+                    <span class="plabel">Contact no:</span>
+                    <span class="pcard-val">+{{ profile.contact_no.country_code  | default_if_none:"" }}-{{ profile.contact_no.national_number  | default_if_none:"" }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Birth Place:</span>
+                    <span class="pcard-val">{{ profile.get_place_of_birth_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Body Type:</span>
+                    <span class="pcard-val">{{ profile.get_body_type_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Weight:</span>
+                    <span class="pcard-val">{{ profile.weight  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Mother Tongue:</span>
+                    <span class="pcard-val">{{ profile.mother_tongue  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Physical Status:</span>
+                    <span class="pcard-val">{{ profile.get_physical_status_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Caste:</span>
+                    <span class="pcard-val">{{ profile.caste  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Gothram:</span>
+                    <span class="pcard-val">{{ profile.gothram  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Star:</span>
+                    <span class="pcard-val">{{ profile.star  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Eating Habits:</span>
+                    <span class="pcard-val">{{ profile.get_eating_habit_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Drinking:</span>
+                    <span class="pcard-val">{{ profile.get_drinking_habit_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Smoking:</span>
+                    <span class="pcard-val">{{ profile.get_smoking_habit_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Country:</span>
+                    <span class="pcard-val">{{ profile.get_country_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">City:</span>
+                    <span class="pcard-val">{{ profile.get_city_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Time of Birth:</span>
+                    <span class="pcard-val">{{ profile.birth_date_time  }}</span>
+                  </p>
+                    <p class="generic">
+                    <span class="plabel">Is Serving:</span>
+                    <span class="pcard-val">{{ profile.is_serving | yesno:"Yes,No"  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">State:</span>
+                    <span class="pcard-val">{{ profile.get_state_display  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Pin Code:</span>
+                    <span class="pcard-val">{{ profile.pincode  }}</span>
+                  </p>
+                  <p class="generic">
+                    <span class="plabel">Marital Status:</span>
+                    <span class="pcard-val">{{ profile.get_marital_status_display  }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Editable profile-->
+          <div class="complete-profile-wrapper editable-profile col-sm-8">
+            <form id="profile-edit-form" action="" method="post">
+              {% csrf_token %}
+              <div class="profile-card">
+                <div class="complete-profile-head">
+                  <div class="save-cancel-profile-changes">
+                    <button type="submit" class="btn btn-default pbtn save-profile-changes">Save</button>
+                    <button class="btn btn-default pbtn cancel-profile-changes">Cancel</button>
+                  </div>
+                </div>
+                <div class="profile-body">
+                  <div class="pbio peditable-bio">
+                    <p class="file-upload" >
+                        {% if profile.images %}
+                          Currently: <a  href="{{ profile.images.url }}" >
+                        {{ profile.images.url }} </a>
+                        <br>
+                         {% endif %}
+                    Change: <input type="file" name="images" placeholder="Image" value="{{ profile.images }}">
+                    </p>
+                    <p class="profile-intro">
+                      <span class="plabel">About Me:</span>
+                      <input type="text" placeholder="About Me" name="about_me" value="{{ profile.about_me }}">
+                    </p>
+                    <p class="pAge">
+                      <span class="plabel">First Name:</span>
+                      <input type="text" placeholder="First Name" name="first_name" value="{{ profile.first_name }}">
+                    </p>
+                    <p class="pAge">
+                      <span class="plabel">Last Name:</span>
+                      <input type="text" placeholder="Last Name" name="last_name" value="{{ profile.last_name }}">
+                    </p>
+                    <p class="pAge">
+                      <span class="plabel">Age:</span>
+                      <input type="text" placeholder="Age" name="age" value="{{ profile.age }}">
+                    </p>
+                    <p class="preligion">
+                      <span class="plabel">Religion:</span>
+                      <input type="text" placeholder="Religion" name="religion" value="{{ profile.religion }}">
+                    </p>
+                    <p class="pzod">
+                      <span class="plabel">Zodiac:</span>
+                      <input type="text" placeholder="Zodiac" name="zodiac" value="{{ profile.zodiac }}">
+                    </p>
+                    <p class="pheight">
+                      <span class="plabel">Height:</span>
+                      <input type="text" placeholder="Height" name="height" value="{{ profile.height }}">
+                    </p>
+                    <p class="pedu">
+                      <span class="plabel">Education:</span>
+                      <input type="text" placeholder="Education" name="education" value="{{ profile.education }}">
+                    </p>
+                    <p class="pprof">
+                      <span class="plabel">Serving:</span>
+                      <input type="text" placeholder="Is Serving" name="is_serving" value="{{ profile.is_serving }}">
+                    </p>
+                    <p class="pprof">
+                      <span class="plabel">Profession:</span>
+                      <input type="text" placeholder="Profession" name="profession" value="{{ profile.profession }}">
+                    </p>
+                    <p class="pemail">
+                      <span class="plabel">Email:</span>
+                      <input type="email" placeholder="Email Id" name="email" value="{{ profile.email }}">
+                    </p>
+                    <!--
+                    <p class="pemail">
+                      <span class="plabel">Time of Birth:</span>
+                      <input type="time" placeholder="Time of Birth" name="birth_date_time" value="{{ profile.birth_date_time }}">
+                    </p> -->
+                    <p class="pcontactno">
+                      <span class="plabel">Contact no:</span>
+                      <input type="number" placeholder="Contact no" name="contact_no" value="{{ profile.contact_no }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Birth Place:</span>
+                      <select type="text" placeholder="Birth Place" name="place_of_birth" >
+                          {% for key, value in choices.place_of_birth %}
+                            <option value="{{ key }}"
+                              {% if key == profile.place_of_birth %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Body Type:</span>
+                      <select type="text" placeholder="Body Type" name="body_type" >
+                          {% for key, value in choices.body_type %}
+                            <option value="{{ key }}"
+                              {% if key == profile.body_type %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
 
-
-<head>
-		<title>Begin Again - Complete Profile</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		<!--[if lte IE 8]><script src="{% static "js/ie/html5shiv.js" %} ></script><![endif]-->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href={% static "css/main.css" %}>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-	</head>
-	<body class="body-loggedIn">
-
-		<!-- Wrapper -->
-			<div id="complete-profile-banner-wrapper">
-
-				<!-- Header -->
-					<header id="header" class="alt header-loggedIn">
-						<a href="index.html" class="logo">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALaSURBVEhL7VM9TFNRFH4QZfQv9gclj0fpUHHQ+DMYDYS+VxBdYMABcCAmLG5KFxwaEhNYRFp4DzQaDWEwOJA2bGwaoiY6SOIEMRJ+TIRQ+h4lBcq9nnveqRTTIgmGiS85ae89537f+XvSIQ4UnmdrcplhNe4w3WpRdLNH0RNdFLY/AGkTGM9puskobH/wGJYfsh7PWJme+CbIhYiiW5sUtjuYo7qcOdUusDGwGHNqj9jp2mJy74BHT7SCQDpTCYiskCs/mCtwn7m0Te7SeLbBncmd/noKQ+wUMF/tSYQ5Aw1Axoh0gjm09p/ldzqf10fmg21R/qAtttXQ8aXXGzYdfwlElBdrpf8U4ZJUAMTTKODUXnIpVIi9N6xfNtG2KYaZAuIt+2xGJM4LaON2F2Fu7ZxdgZrmJ7XjysDqBcg0aT80Z250TQ93twzxqsdT24ID1qgQEO+94WQJrPEyiP5Awlxg7kAltWlOnKGCMRQwrAlveOkYr2gsEv71M3XcF4l/Rd+AOYmP9wqxUSTCxq+HZMh+QxB5BpNX0O9Wr9qtVNcbQ5/lzMrKxooHCfJBtIX+IqBVk4Joxtf8HdsBVjHCi0QckH+0k1CjIhZE5rCafrMSH+cCd6oaPFxmbn8dnu3BjwqiZMlt7u1PoMi7a+3DsAizVEWSF9f4Sp/GT2QGL0fiZUiYC5DRED1MMXf1LSAKU6YMLNUcnECRuw/f4xzgbgGWo0oK8UKo4jVWoVufiC43uFR1BIjfklCaBLagmlbmvul4U9vd4+2LY7YXnyzMn+9d7FSMRBA26IO4E5sn961eIrr84NLloyA0JQRsEa2HXIhS3ayHbE0kzTK4W4RfjcLyA2fwp0X0lWPr7BllIA+uFkP/O6CCKKxzTFQjZkLu3SGy3m5R4F5W61LMEaihsP0ByJpAaEPMQJzFjGDjRkBsVnwzGPQ/wF21Cv1F4DKc8p+l4yEOCpL0G7lLFN00VaqqAAAAAElFTkSuQmCC">
-                            <strong>Begin</strong>
-                            <span>Again</span></a>
-						<nav class="loggedIn-account-nav">
-							<span href="#" class="loggedIn-account-ico">My Profile
-                                <i class="fa fa-bars" aria-hidden="true"></i>
-                                <ul class="account-dropdown">
-                                    <li><a href="my-complete-profile.html" class="my-profile-settings">Settings</a></li>
-                                    <li>Logout</li>
-                                </ul>
-                            </span>
-						</nav>
-					</header>
-
-				<!-- Menu -->
-
-                <!-- Complete profile and other profiles -->
-					<section id="complete-banner-profile-list" class="banner-profile-list">
-						<div class="row complete-profile-row">
-
-                            <!-- Saved profie -->
-                            <div class="complete-profile-wrapper saved-profile col-sm-8">
-                                <div class="profile-card">
-                                    <div class="complete-profile-head">
-                                        <img class="ppic" src={{ profile.images.url }}>
-                                        <i class="fa fa-pencil-square-o edit-profile-ico" aria-hidden="true"></i>
-                                        <div class="complete-profile-pname">My profile
-                                            <div><span class="ploc">{{ profile.location  }}</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-intro">
-                                        {{ profile.about_us  }}
-                                    </div>
-                                    <div class="profile-body">
-                                        <div class="pbio">
-                                            <p class="pAge">
-                                                <span class="plabel">Age:</span>
-                                                <span class="pcard-val">{{ profile.age  }} years</span>
-                                            </p>
-                                            <p class="preligion">
-                                                <span class="plabel">Religion:</span>
-                                                <span class="pcard-val">{{ profile.religion  }}</span>
-                                            </p>
-                                            <p class="pzod">
-                                                <span class="plabel">Zodiac:</span>
-                                                <span class="pcard-val">{{ profile.zodiac  }}</span>
-                                            </p>
-                                            <p class="pheight">
-                                                <span class="plabel">Height:</span>
-                                                <span class="pcard-val">{{ profile.hieght  }}</span>
-                                            </p>
-                                            <p class="pedu">
-                                                <span class="plabel">Education:</span>
-                                                <span class="pcard-val">{{ profile.education  }}</span>
-                                            </p>
-                                            <p class="pemail">
-                                                <span class="plabel">Email:</span>
-                                                <span class="pcard-val">{{ profile.email  }}</span>
-                                            </p>
-                                            <p class="pcontactno">
-                                                <span class="plabel">Contact no:</span>
-                                                <span class="pcard-val">{{ profile.contact_no  }}</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-
-                            <!-- Editable profile-->
-
-                            <div class="complete-profile-wrapper editable-profile col-sm-8">
-                                <form id="profile-edit-form" action="" method="post">
-
-                                    {% csrf_token %}
-
-                                    <div class="profile-card">
-                                    <div class="complete-profile-head">
-                                        <img class="ppic" src="{{ profile.images.url }}">
-                                        <div class="save-cancel-profile-changes">
-                                            <button type="submit" class="btn btn-default pbtn save-profile-changes">Save</button>
-                                            <button class="btn btn-default pbtn cancel-profile-changes">Cancel</button>
-                                        </div>
-                                        <div class="complete-profile-pname">
-                                            <input type="text" placeholder="Your name" name="profileName" value="My profile">
-                                            <div>
-                                                <input type="text" placeholder="Your city" name="profileLocation" value="Mumbai">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="profile-intro">
-                                        <textarea rows="4" cols="50">Music and pet lover. Enjoys every bit of life with full enthusiasm and finds joy in every moment. In search of a perfect match who not only understands me but also cheers the beauty of life.</textarea>
-                                    </div>
-                                    <div class="profile-body">
-                                        <div class="pbio peditable-bio">
-                                            <p class="pAge">
-                                                <span class="plabel">Age:</span>
-                                                <input type="text" placeholder="Age" name="{{ profile.age }}" value="{{ profile.age }}">
-                                            </p>
-                                            <p class="preligion">
-                                                <span class="plabel">Religion:</span>
-                                                <input type="text" placeholder="Religion" name="{{ profile.religion }}" value="{{ profile.religion }}">
-                                            </p>
-                                            <p class="pzod">
-                                                <span class="plabel">Zodiac:</span>
-                                                <input type="text" placeholder="Zodiac" name="profileZodiac" value="Gemini">
-                                            </p>
-                                            <p class="pheight">
-                                                <span class="plabel">Height:</span>
-                                                <input type="text" placeholder="Height" name="profileHeight" value="5 Feet 10 Inches">
-                                            </p>
-                                            <p class="pedu">
-                                                <span class="plabel">Education:</span>
-                                                <input type="text" placeholder="Education" name="profileEducation" value="MBA">
-                                            </p>
-                                            <p class="pprof">
-                                                <span class="plabel">Profession:</span>
-                                                <input type="text" placeholder="Profession" name="profileProfession" value="Lawyer">
-                                            </p>
-                                            <p class="pemail">
-                                                <span class="plabel">Email:</span>
-                                                <input type="email" placeholder="Email Id" name="profileEmail" value="abc@gmail.com">
-                                            </p>
-                                            <p class="pcontactno">
-                                                <span class="plabel">Contact no:</span>
-                                                <input type="number" placeholder="Contact no" name="profileContactNo" value="9810738298">
-                                            </p>
-                                            <p class="pnewpassword">
-                                                <span class="plabel">New Password:</span>
-                                                <input type="password" placeholder="New password" name="profileNewPassword" value="123456">
-                                            </p>
-                                            <p class="poldpassword">
-                                                <span class="plabel">Old Password:</span>
-                                                <input type="password" placeholder="Old password" name="profileOldPassword" value="1234567">
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                </form>
-                        </div>
-
-                            <!-- Other profiles on the right -->
-                            <div class="other-profiles-wrapper col-sm-4">
-                                <div class="profile-card">
-                                    <div class="profile-head">
-                                        <img class="ppic" src="images/p1.jpg">
-                                        <span class="pname">Varun Sharma
-                                            <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
-                                        </span>
-                                        <p class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="profile-body">
-                                        <a href="complete-profile.html" class="pbtn view-full-profile">View full profile</a>
-                                        <a href="#" class="pbtn">I'm interested</a>
-                                    </div>
-                                </div>
-                                <div class="profile-card">
-                                    <div class="profile-head">
-                                        <img class="ppic" src="images/p2.jpg">
-                                        <span class="pname">Mayank Jha
-                                            <div><span class="pfage">29 years,</span><span class="ploc">West Bengal</span></div>
-                                        </span>
-                                        <p class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="profile-body">
-                                        <a href="#" class="pbtn view-full-profile">View full profile</a>
-                                    </div>
-                                </div>
-                                <div class="profile-card">
-                                    <div class="profile-head">
-                                        <img class="ppic" src="images/p3.jpg">
-                                        <span class="pname">Divakar Gupta
-                                            <div><span class="pfage">29 years,</span><span class="ploc">Mumbai</span></div>
-                                        </span>
-                                        <p class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span>
-                                        </p>
-                                    </div>
-                                    <div class="profile-body">
-                                        <a href="#" class="pbtn view-full-profile">View full profile</a>
-                                        <a href="#" class="pbtn">I'm interested</a>
-                                    </div>
-                                </div>
-                                <div class="view-all-profiles">
-                                    <a href="profiles-listing.html" class="pbtn">View all profiles</a>
-                                </div>
-                        </div>
-
-                        </div>
-					</section>
-
-				<!-- Main -->
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <script src="{% static "js/main.js" %}"></script>
-            <script src="{% static "js/my-profile.js" %}"></script>
-
-
-</body></html>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Weight:</span>
+                      <input type="text" placeholder="Weight" name="weight" value="{{ profile.weight }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Mother Tongue:</span>
+                      <input type="text" placeholder="Mother Tongue" name="profileEmail" value="{{ profile.mother_tongue }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Physical Status:</span>
+                      <select type="text" placeholder="Physical Status" name="physical_status" >
+                          {% for key, value in choices.physical_status %}
+                            <option value="{{ key }}"
+                              {% if key == profile.physical_status %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Caste:</span>
+                      <input type="text" placeholder="Caste" name="caste" value="{{ profile.caste }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Gothram:</span>
+                      <input type="text" placeholder="Gotram" name="gothram" value="{{ profile.gothram }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Star:</span>
+                      <input type="text" placeholder="Star" name="star" value="{{ profile.star }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Eating Habits: </span>
+                      <select type="text" placeholder="Eating Habits" name="eating_habit" >
+                          {% for key, value in choices.eating_habit %}
+                            <option value="{{ key }}"
+                              {% if key == profile.eating_habit %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Drinking: </span>
+                      <select type="text" placeholder="Drinking" name="drinking_habit" >
+                          {% for key, value in choices.drinking_habit %}
+                            <option value="{{ key }}"
+                              {% if key == profile.drinking_habit %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Smoking: </span>
+                      <select type="text" placeholder="Smoking" name="smoking_habit" >
+                          {% for key, value in choices.smoking_habit %}
+                            <option value="{{ key }}"
+                              {% if key == profile.smoking_habit %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Country:</span>
+                      <select type="text" placeholder="Country" name="country" >
+                          {% for key, value in choices.country %}
+                            <option value="{{ key }}"
+                              {% if key == profile.country %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">City:</span>
+                      <select type="text" placeholder="City" name="city" >
+                          {% for key, value in choices.city %}
+                            <option value="{{ key }}"
+                              {% if key == profile.city %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">State:</span>
+                      <select type="text" placeholder="State" name="state" >
+                          {% for key, value in choices.state %}
+                            <option value="{{ key }}"
+                              {% if key == profile.state %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Pin Code:</span>
+                      <input type="text" placeholder="Pin Code" name="pincode" value="{{ profile.pincode }}">
+                    </p>
+                    <p class="generic">
+                      <span class="plabel">Marital Status:</span>
+                      <select type="text" placeholder="Marital Status" name="marital_status" >
+                          {% for key, value in choices.marital_status %}
+                            <option value="{{ key }}"
+                              {% if key == profile.marital_status %} selected="selected" {% endif %}> {{value}}
+                            </option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                    <p class="file-upload" >
+                        {% if profile.documents %}
+                          Currently: <a  href="{{ profile.documents.url }}" >
+                        {{ profile.documents.url }} </a>
+                        <br>
+                         {% endif %}
+                    Change: <input type="file" name="documents" placeholder="Documents" value="{{ profile.documents }}">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Other profiles on the right -->
+          <div class="other-profiles-wrapper col-sm-4">
+              {% for new_profile in new_profiles %}
+            <div class="profile-card">
+              <div class="profile-head">
+                <img class="ppic" {% if new_profile.images %} src={{ new_profile.images.url }} {% endif %}>
+                <span class="pname">
+                  {{ new_profile.first_name}} {{ new_profile.last_name }}
+                  <div><span class="pfage">{{new_profile.age}} years,</span><span class="ploc">{{new_profile.get_city_display}}</span></div>
+                </span>
+                <p class="star-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+              </div>
+              <div class="profile-body">
+                <a href="/profiles/{{new_profile.id}}" class="pbtn view-full-profile">View full profile</a>
+                <a href="../../profiles/{{new_profile.id}}/show-interest" class="pbtn">I'm interested</a>
+              </div>
+            </div>
+            {% endfor %}
+              Selected Profiles
+              {% for selected_profile in selected_profiles %}
+            <div class="profile-card">
+              <div class="profile-head">
+                <img class="ppic" {% if selected_profile.images %} src={{ selected_profile.images.url }} {% endif %}>
+                <span class="pname">
+                  {{ selected_profile.first_name}} {{ selected_profile.last_name }}
+                  <div><span class="pfage">{{selected_profile.age}} years,</span><span class="ploc">{{selected_profile.get_city_display}}</span></div>
+                </span>
+                <p class="star-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+              </div>
+              <div class="profile-body">
+                <a href="/profiles/{{selected_profile.id}}" class="pbtn view-full-profile">View full profile</a>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="view-all-profiles">
+              <a href="../" class="pbtn">View all profiles</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Main -->
+    </div>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/my-profile.js" %}"></script>
+  </body>
+</html>
